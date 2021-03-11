@@ -11,10 +11,32 @@
     <!-- Aqui van a estar las clases para la barra de navegación -->
     <style>
         .button-login{
-            background-color:grey;
-            padding-right: 0.25cm ;
-            padding-left: 0.25cm ;
-            
+            position: absolute;
+            width: 120px;
+            height: 34px;
+            left: 1780px;
+            top: 10px;
+
+            background: #C4C4C4;
+            opacity: 0.6;
+            border-radius: 11px;
+        }
+
+        .button-register{
+            position: absolute;
+            width: 120px;
+            height: 34px;
+            left: 1645px;
+            top: 10px;
+
+            background: #C4C4C4;
+            opacity: 0.6;
+            border-radius: 11px;
+        }
+
+        .button-login:hover{
+            background-color: black;
+            color: white
         }
     </style>
 </head>
@@ -38,9 +60,9 @@
               <a class="nav-link disabled" href="#">ChatBot</a>
             </li>
           </ul>
-          <button>Sign Up</button>
+          <button class="button-register">Sign Up</button>
           <br>
-          <button class="button-login">Sign In</button>
+         <a href="/static/imgs/d6c7e22127c865da10837b2da3651a9e.jpg" target="_blanket" aria-multiline="false"> <button class="button-login">Sign In</button></a>
         </div>
       </nav>
     </header>
