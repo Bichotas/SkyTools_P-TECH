@@ -25,8 +25,8 @@
         .contenedor{
             
             background-color: #F2F2F2;
-            width: 423px;
-            height: 413px;
+            width: 390px;
+            height: 380px;
             border-radius: 16px;
             display: block;
             margin-left: auto;
@@ -51,8 +51,13 @@
             width: 200px;
             height: 40px;
             text-align: center;
+            display: inline-block;
+            margin-bottom: 50px;
         }
         
+        #uno{
+            align-items: center;
+        }
        
         button{
             background-color: #53E96B;
@@ -64,22 +69,45 @@
             border: none;
             border-radius: 16px;
         }   
+
+        span{
+            position: relative;
+            left: 25%;
+            
+            top: 30%;
+        }
+
+        hr{
+            
+
+            margin-top: -30px;
+        }
+
+
+
     </style>
 </head>
 <body>
     <div class="contenedor">
         <div class="campo"><form action="">
             
-            <li><input type="text" name="username" placeholder="Username"></li>
-            <li><input type="text" name="email" id="email" placeholder="Email"></li>
-            <li><input type="password" name="password" id="password" placeholder="Password"></li>
+            <span><input type="text" name="username" placeholder="Username" ></span><br>
+            <hr>
+            <span><input type="text" name="email" id="email" placeholder="Email"></span><br>
+            <hr>
+            <span><input type="password" name="password" id="password" placeholder="Password"></span><br>
+            <hr>
             
         </form></div>
+
+        
     </div>
 
-    <div><a href="#" target="_blank"><button>Crear cuenta</button></div>
 
-
+    <div class="abajo">
+        <div><a href="#" target="_blank"><button>Crear cuenta</button></a></div><br>
+        <div><div>¿Ya tienes cuenta?</div></div>
+    </div>
     
 </body>
 </html>
