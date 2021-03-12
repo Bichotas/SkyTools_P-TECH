@@ -1,82 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
-
-
-    <!-- Aqui van a estar las clases para la barra de navegación -->
-    <style>
-        .button-login{
-            position: absolute;
-            width: 120px;
-            height: 34px;
-            left: 1780px;
-            top: 10px;
-
-            background: #C4C4C4;
-            opacity: 0.6;
-            border-radius: 11px;
-        }
-
-        .button-register{
-            position: absolute;
-            width: 120px;
-            height: 34px;
-            left: 1645px;
-            top: 10px;
-
-            background: #C4C4C4;x
-            opacity: 0.6;
-            border-radius: 11px;
-        }
-
-        .button-login:hover{
-            background-color: black;
-            color: white
-        }
-
-
-        .button-register:hover{
-          background-color: #C4C4C4;
-          color: white;
-        }
-
-        .dou{
-          border-radius: 5px;
-        }
-    </style>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
-        
-        <nav class="navbar navbar-expand-lg navbar-light bg-light dou">
-        <a class="navbar-brand" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/" target="_blank">Proyecto</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Herramientas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">ChatBot</a>
-            </li>
-          </ul>
-          <button class="button-register">Sign Up</button>
-          <br>
-         <a href="/contens/img/4f2e333263a8608c4e8d495bea8a154d.jpg" target="_blanket" aria-multiline="false"> <button class="button-login">Sign In</button></a>
-        </div>
-      </nav>
-      
-    </header>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container">
+  <h3>Inverted Navbar</h3>
+  <p>An inverted navbar is black instead of gray.</p>
+</div>
+
 </body>
 </html>
