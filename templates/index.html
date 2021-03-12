@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Signika;
+    }
+
+    body{
+        background: #c4c4c4;
+        
+    }
+
+    .contenedor{
+        
+        background-color: #F2F2F2;
+        width: 390px;
+        height: 380px;
+        border-radius: 16px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .campo{
+        color: black;
+        opacity: inherit;
+        position: relative;
+        font-family: signika;
+        
+    }
+
+    input{
+        outline: none;
+        border: none;
+        background-color: #F2F2F2;
+        font-size: 19px;
+        border-radius: 16px;
+        margin-top: 20px;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        display: inline-block;
+        margin-bottom: 50px;
+    }
+    
+    #uno{
+        align-items: center;
+    }
+   
+    button{
+        background-color: #53E96B;
+        color: white;
+        font-size: 17px;
+        width: 150px;
+        height: 75px;
+        outline: 0px;
+        border: none;
+        border-radius: 16px;
+    }   
+
+    span{
+        position: relative;
+        left: 25%;
+        
+        top: 30%;
+    }
+
+    hr{
+        
+
+        margin-top: -30px;
+    }
+
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="contenedor">
+    <div class="campo"><form action="">
+        
+        <span><input type="text" name="username" placeholder="Username" ></span><br>
+        <hr>
+        <span><input type="text" name="email" id="email" placeholder="Email"></span><br>
+        <hr>
+        <span><input type="password" name="password" id="password" placeholder="Password"></span><br>
+        <hr>
+        
+    </form></div>
+
+    
+</div>
+
+
+<div class="abajo">
+    <div><a href="#" target="_blank"><button>Crear cuenta</button></a></div><br>
+    <div><div>¿Ya tienes cuenta?</div></div>
+</div>
+{% endblock %}
