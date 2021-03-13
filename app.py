@@ -7,7 +7,7 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
 
-@app.route('/registrarse')
+@app.route('/register')
 def register():
     return render_template('register.html')
 
