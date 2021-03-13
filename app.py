@@ -7,13 +7,8 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
+from routes import *
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 if __name__== '__main__':
     app.run(debug=True)
