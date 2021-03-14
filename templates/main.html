@@ -12,6 +12,37 @@
 {% block styles %}
 <style>
 
+    .contenedor{
+        width: auto;
+        height: 80%
+    }
+
+    .imagen{
+        width: auto;
+        height: 380px;
+        margin-top: -20px;
+        background-color: rgba(28, 87, 76, 0.38);
+
+    }
+
+
+    .problema{
+        width: auto;
+        height: 200px;
+        background-color: white;
+    }
+
+    .solucion{
+        width: auto;
+        height: 280px;
+        background-color: rgba(100, 208, 189, 0.38);
+    }
+
+    .final{
+        width: auto;
+        height: 280px;
+        background-color: rgba(208, 242, 236, 0.38);
+    }
 </style>
 
 
@@ -21,9 +52,16 @@
 <!-- Bloque para todo el bloqeu de body en el cual va a llevar toda la info-->
 
 {% block body %}
+<div class="contenedor">
+    <div class="imagen">
+    </div>
+    <div class="problema">
+    </div>
+    <div class="solucion">
+    </div>
+    <div class="final">
 
-
-
-
+    </div>
+</div>
 
 {% endblock %}
