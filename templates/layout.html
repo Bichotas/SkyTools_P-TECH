@@ -16,17 +16,52 @@
 
     {% endblock %}
 
-    
+    <style>
+
+      .boton-general{
+        border: none; 
+        border-radius: 11px;
+        width: 150px; 
+        height: 34px; 
+        background: #c4c4c4;
+        font-family: Signika;
+      }
+
+      .addons-Bgeneral{
+        opacity: 0.6; 
+        margin-left: 20px;
+      }
+      
+      .boton-general:hover{
+        background-color: white;
+      }
+
+      .contenedor-actividades{
+        position: absolute;
+        width: 48px;
+        height: 250px;
+        background-color: gray;
+        border-radius: 13px;
+        top: 40%;
+        left: -1%;
+      }
+      .contenedor-actividades:hover{
+        width: 200px;
+        height: 500px;
+      }
+
     {% block styles %}
 
 
 
     {% endblock %}
 
-
+    </style>
     
 </head>
 <body>
+
+  <!-- Barra de navegación-->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -42,15 +77,17 @@
 
           <div style="margin-left: 86%; ">
             <div style="display: flex; margin-top: 10px; margin-bottom: 10px;">
-              <button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4;">Sign Up</button>
-              <button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4; opacity: 0.6; margin-left: 20px;">Sign In</button>
+              <button class="boton-general">Sign Up</button>
+              <button class="boton-general addons-Bgeneral">Sign In</button>
               <!--<li><button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4;">Sign In</button></li>-->
             </div>
           </div>
         </div>
       </nav>
 
-
+      <!-- Pestaña de Actividades -->
+      <div class="contenedor-actividades cont">
+      </div>
     {% block body %}
 
 
@@ -58,10 +95,6 @@
 
 
     {% endblock %}
-    <footer>
-      <div style="display: block; margin-top: 26.4%;">
-        <div style="width: 100%; height: 70px; background: #629289;"></div>
-      </div>
-    </footer>
+
 </body>
 </html>
