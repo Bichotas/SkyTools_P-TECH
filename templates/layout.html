@@ -54,6 +54,52 @@
         width: 200px;
         height: 500px;
       }
+
+/**
+      .showme{
+        position: absolute;
+        width: 48px;
+        height: 250px;
+        background-color: gray;
+        border-radius: 13px;
+        top: 40%;
+        left: -1%;
+        color: white;
+      }
+
+      .showhim:hover .showme{
+        display: block;
+        position: absolute;
+        width: 200px;
+        height: 500px;
+        color: white;
+      }
+**/
+
+
+      .owo{
+        position: absolute;
+        top: 50%;
+        left: -5.75%;
+        
+      }
+      .rotates{
+        transform: rotate(-90deg);
+        width: 250px;
+        height: 48px;
+        border-radius: 13px;
+
+      }
+
+      .sing{
+        position: absolute;
+        transform: rotate(-90deg);
+        width: 320px;
+        height: 58px;
+        border-radius: 13px;
+        left: 2%;
+      }
+
     {% block styles %}
 
 
@@ -92,8 +138,31 @@
       <!-- Pestaña de Actividades -->
 
 
+<!--
+      <div class="contenedor-actividades">
+        <div>
+          <button>unu</button>
+        </div>
+      </div>
+-->
+<!--
+  <div class="showhim">
+    <div class="showme">Hi</div>
+  </div>  
+-->
 
-      <div class="contenedor-actividades"></div>
+
+<div class="btn-group owo">
+  <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
+    Actividades <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu sing" role="cat">
+    <li class="soso"><a href="#">Acción #1</a></li>
+
+  </ul>
+</div>
+
+
     {% block body %}
 
 
