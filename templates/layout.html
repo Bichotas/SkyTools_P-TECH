@@ -10,23 +10,146 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
 
+
+
+    <!-- Bloque para poner el titulo en cada plantilla -->
     {% block title %}
 
 
 
     {% endblock %}
+    <!-- Inicio de bloque de estilos
+            Este va a ser el cual tenga las clases que se van a utilizar en la plantilla base
+    -->
+    <style>
 
-    
+      .boton-general{
+        border: none; 
+        border-radius: 11px;
+        width: 150px; 
+        height: 34px; 
+        background: #c4c4c4;
+        font-family: Signika;
+      }
+
+      .addons-Bgeneral{
+        opacity: 0.6; 
+        margin-left: 20px;
+      }
+      
+      .boton-general:hover{
+        background-color: white;
+      }
+
+
+      .contenedor-actividades{
+        position: absolute;
+        width: 48px;
+        height: 250px;
+        background-color: gray;
+        border-radius: 13px;
+        top: 40%;
+        left: -1%;
+      }
+
+
+      .contenedor-actividades:hover{
+        
+        position: absolute;
+        width: 200px;
+        height: 500px;
+      }
+
+/**
+      .showme{
+        position: absolute;
+        width: 48px;
+        height: 250px;
+        background-color: gray;
+        border-radius: 13px;
+        top: 40%;
+        left: -1%;
+        color: white;
+      }
+
+      .showhim:hover .showme{
+        display: block;
+        position: absolute;
+        width: 200px;
+        height: 500px;
+        color: white;
+      }
+**/
+
+
+      .owo{
+        position: absolute;
+        top: 50%;
+        left: -5.75%;
+        
+      }
+      .rotates{
+        transform: rotate(-90deg);
+        width: 250px;
+        height: 48px;
+        border-radius: 13px;
+
+      }
+
+
+      .rotates:hover{
+        
+      }
+      .sing{
+        background-color: #c4c4c4;
+        position: absolute;
+        transform: rotate(-90deg);
+        width: 600px;
+        height: 300px;
+        border-radius: 13px;
+        left: -1%;
+        margin-top: -60%;
+
+      }
+
+
+/** Clase para botón de agregar activdad **/
+      .soso{
+        position: absolute;
+        transform: rotate(90deg);
+        top: 45%;
+        left: 85%;
+        border: none;
+        border-radius: 11px;
+        background-color: #AAAAAA;
+        height: 40px;
+        width: 120px;
+
+      }
+
+      .hacheR{
+        transform: rotate(90deg);
+        height: 5px;
+        width: 250px;
+      }
+
+      .soso:hover{
+        background-color: #f4f3f3;
+      }
+
+    /** Inicio de parte de bloque en el cual se va a poder a escribir clases en otra plantilla **/
     {% block styles %}
 
 
 
     {% endblock %}
 
-
+    </style>
     
 </head>
 <body>
+
+  <!-- Barra de navegación-->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -42,15 +165,51 @@
 
           <div style="margin-left: 86%; ">
             <div style="display: flex; margin-top: 10px; margin-bottom: 10px;">
-              <button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4;">Sign Up</button>
-              <button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4; opacity: 0.6; margin-left: 20px;">Sign In</button>
+              <button class="boton-general">Sign Up</button>
+              <button class="boton-general addons-Bgeneral">Sign In</button>
               <!--<li><button style="border: none; border-radius: 11px; width: 150px; height: 34px; background: #c4c4c4;">Sign In</button></li>-->
             </div>
           </div>
         </div>
       </nav>
 
+      
+<!-- Pestaña de actividades fallidas
+        Estas pestañas fueron con divs, las clases estan arribas
+-->
 
+<!--
+      <div class="contenedor-actividades">
+        <div>
+          <button>unu</button>
+        </div>
+      </div>
+-->
+<!--
+  <div class="showhim">
+    <div class="showme">Hi</div>
+  </div>  
+-->
+
+<!-- Pestaña de Actividades - Usando Botón -->
+<div class="btn-group owo">
+  <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
+    Actividades <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu sing" role="sing">
+
+
+    
+    <li><button class="soso">Añadir tarea</button>
+    </li>
+    <div class="hacheR"></div>
+ 
+
+  </ul>
+</div>
+
+
+<!-- Bloque para poner código y se ponga en el body-->
     {% block body %}
 
 
@@ -58,10 +217,6 @@
 
 
     {% endblock %}
-    <footer>
-      <div style="display: block; margin-top: 26.4%;">
-        <div style="width: 100%; height: 70px; background: #629289;"></div>
-      </div>
-    </footer>
+
 </body>
 </html>
