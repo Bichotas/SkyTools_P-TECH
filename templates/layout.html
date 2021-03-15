@@ -10,12 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
 
+
+
+    <!-- Bloque para poner el titulo en cada plantilla -->
     {% block title %}
 
 
 
     {% endblock %}
-
+    <!-- Inicio de bloque de estilos
+            Este va a ser el cual tenga las clases que se van a utilizar en la plantilla base
+    -->
     <style>
 
       .boton-general{
@@ -131,6 +136,8 @@
       .soso:hover{
         background-color: #f4f3f3;
       }
+
+    /** Inicio de parte de bloque en el cual se va a poder a escribir clases en otra plantilla **/
     {% block styles %}
 
 
@@ -166,8 +173,10 @@
         </div>
       </nav>
 
-      <!-- Pestaña de Actividades -->
-
+      
+<!-- Pestaña de actividades fallidas
+        Estas pestañas fueron con divs, las clases estan arribas
+-->
 
 <!--
       <div class="contenedor-actividades">
@@ -182,7 +191,7 @@
   </div>  
 -->
 
-
+<!-- Pestaña de Actividades - Usando Botón -->
 <div class="btn-group owo">
   <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
     Actividades <span class="caret"></span>
@@ -200,6 +209,7 @@
 </div>
 
 
+<!-- Bloque para poner código y se ponga en el body-->
     {% block body %}
 
 
