@@ -8,6 +8,9 @@ from flask import Flask, render_template
 #Modulo de bootstrap
 from flask_bootstrap import Bootstrap
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 #Inicializamos la aplicacion guardándola en una variable
 app = Flask(__name__)
