@@ -94,11 +94,21 @@
       .sing{
         position: absolute;
         transform: rotate(-90deg);
-        width: 320px;
-        height: 58px;
+        width: 600px;
+        height: 300px;
         border-radius: 13px;
-        left: 2%;
+        left: -1%;
+        margin-top: -60%;
+
       }
+
+      .soso{
+        position: absolute;
+        transform: rotate(90deg);
+        top: 50%;
+        left: 90%;
+      }
+
 
     {% block styles %}
 
@@ -156,8 +166,11 @@
   <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
     Actividades <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu sing" role="cat">
-    <li class="soso"><a href="#">Acción #1</a></li>
+  <ul class="dropdown-menu sing" role="sing">
+
+
+    
+    <li><button class="soso">Añadir tarea</button></li>
 
   </ul>
 </div>
