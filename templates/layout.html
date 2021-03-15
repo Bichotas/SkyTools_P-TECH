@@ -91,7 +91,12 @@
 
       }
 
+
+      .rotates:hover{
+        
+      }
       .sing{
+        background-color: #c4c4c4;
         position: absolute;
         transform: rotate(-90deg);
         width: 600px;
@@ -102,14 +107,30 @@
 
       }
 
+
+/** Clase para botón de agregar activdad **/
       .soso{
         position: absolute;
         transform: rotate(90deg);
-        top: 50%;
-        left: 90%;
+        top: 45%;
+        left: 85%;
+        border: none;
+        border-radius: 11px;
+        background-color: #AAAAAA;
+        height: 40px;
+        width: 120px;
+
       }
 
+      .hacheR{
+        transform: rotate(90deg);
+        height: 5px;
+        width: 250px;
+      }
 
+      .soso:hover{
+        background-color: #f4f3f3;
+      }
     {% block styles %}
 
 
@@ -170,7 +191,10 @@
 
 
     
-    <li><button class="soso">Añadir tarea</button></li>
+    <li><button class="soso">Añadir tarea</button>
+    </li>
+    <div class="hacheR"></div>
+ 
 
   </ul>
 </div>
