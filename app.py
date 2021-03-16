@@ -1,24 +1,31 @@
-#Este va a ser el archivo para ejecutar la página
-
-#Importamos los modulos flask y render template
-
-""" El render template se usa para poner plantillas o archivos html en flask"""
-from flask import Flask, render_template
-
-#Modulo de bootstrap
-from flask_bootstrap import Bootstrap
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import LoginForm, RegistrationForm
 
 
-#Inicializamos la aplicacion guardándola en una variable
 app = Flask(__name__)
+app.config['SECRET_KEY']='5d0a9f096785838c292e4212b9deba2a'
 
-#Se hace un objeto con el modulo bootstrap, utilizando la aplicación ya anteriormente inicializada
-bootstrap = Bootstrap(app)
-
-#Se importa el archivo rutas, estoo para que se ejecuten como si estuviesen en este mismo archivo
-from routes import *
+@app.route('/')
+def main():
+    return render_template('blank.html')
 
 
-#Ponemos "persistencia", esto para que detecte la aplicación que esta inicializada, esta la corra y ponga sus parametros
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}', 'success')
+        return redirect(url_for('main'))
+    return render_template('register.html', form=form)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 if __name__== '__main__':
     app.run(debug=True)

@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 
+
 {% block title %}
 
 <title>Register - BichotaS</title>
 
 {% endblock %}
+
 
 {% block styles %}
 <style>
@@ -24,7 +26,7 @@
         
         background-color: #F2F2F2;
         width: 390px;
-        height: 370px;
+        height: 480px;
         border-radius: 16px;
         display: block;
         margin-top: auto;
@@ -61,13 +63,6 @@
     }
    
 
-    span{
-        position: relative;
-        left: 25%;
-        
-        top: 30%;
-    }
-
     .dou{
         margin-left: 10%;
         width: 80%;
@@ -95,8 +90,8 @@
 
     .contenedor-boton{
         display: block;
-        margin-top: 25%;
-        margin-left: 27%;
+        margin-top: 10%;
+        margin-left: 28%;
     }    
 
     .pd{
@@ -114,7 +109,7 @@
 {% endblock %}
 
 {% block body %}
-
+<!--
 <div class="separacion"></div>
 <div class="contenedor">
     <div class="campo"><form action="">
@@ -125,20 +120,57 @@
         <span><input type="text" name="email" id="email" placeholder="Email"></span><br>
         
         <div class="dou"></div>
-        <span><input type="password" name="password" id="password" placeholder="Contraseña"></span><br>
         
-        <div class="dou"></div>
-        <span><input type="password" name="conpassword" id="conpassword" placeholder="Confirmar Contraseña"></span><br>
-        <div class="dou"></div>
         </form>
 
         <div class="contenedor-boton">
-            <button class="uwu">Crear Cuenta</button>
-            <div class="pd"><p>¿Ya tienes cuenta?</p></div>
-            <div class="pd"><p>Inicia sesion<a href="#" target="_blank"> aqui</a></p></div>
+            <button class="uwu">Inicia Sesión</button>
+            <div class="pd"><p>No tienes cuenta <br>Crea una<a href="#"> aqui</a></p></div>
+            
         </div>
+    </div> 
+</div>
+-->
 
-    
+<div class="separacion"></div>
+<div class="contenedor">
+    <div class="campo">
+        <form action="" method="POST">
+        
+        <fieldset class="form-group">
+                <div class="fom-group">
+                    {{ form.username.label(class="form-control-label") }}
+                    {{ form.username(class="form-control form-control-lg") }}
+                </div>
+                <div class="dou"></div>
+                <div class="fom-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {{ form.email(class="form-control form-control-lg") }}
+                </div>
+                <div class="dou"></div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {{ form.password(class="form-control form-control-lg") }}
+                </div>
+                <div class="dou"></div>
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                    {{ form.confirm_password(class="form-control form-control-lg") }}
+                </div>
+                <div class="dou"></div>
+        </fieldset>        
+        
+            <div class="contenedor-boton">
+                {{ form.submit(class="uwu") }}         
+            </div>
+        </div>
+        <div class="recoger">
+            <small class="text-muted">
+            Dont you have an account, yey?<a class="ml-2" href="{{ url_for('login') }}">Sign Up</a> Here
+            </small>
+        </div>
+        </form>
+    </div> 
 </div>
 
 
