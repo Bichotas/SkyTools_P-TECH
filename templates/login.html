@@ -75,7 +75,7 @@
 
     .separacion{
         margin-top: 100px;
-        margin-bottom: 200px;
+        margin-bottom: 300px;
     }
 
     .uwu{
@@ -143,27 +143,17 @@
         <form action="" method="POST">
         
         <fieldset class="form-group">
-            <div class="fom-group" style="width: 80%; margin-left: 10%;">
-
-                <div style="text-align: center; ">
-                    {{ form.email.label(class="form-control-label") }}
-                </div>
-
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 55px;">
                 <div>
-                {{ form.email(class="form-control form-control-lg", style="text-align: left;", placeholder="password") }}
+                {{ form.email(class="form-control form-control-lg", style="text-align: center; border-radius: 11px", placeholder="Email") }}
                 </div>
             </div>
 
 
             <div class="dou"></div>
-            <div class="fom-group" style="width: 80%; margin-left: 10%;">
-
-
-                <div style="text-align: center; margin-top: 15px;">
-                    {{ form.password.label(class="form-control-label") }}
-                </div>
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
                 <div>
-                    {{ form.password(class="form-control form-control-lg", style="text-align: left;", placeholder="password") }}
+                    {{ form.password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Password") }}
                 </div>
             </div>
 
