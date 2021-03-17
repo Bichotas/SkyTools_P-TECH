@@ -24,7 +24,7 @@
 
     .contenedor{
         
-        background-color: #F2F2F2;
+        background-color: #faf6f6;
         width: 420px;;
         height: 250px;
         border-radius: 16px;
@@ -68,14 +68,14 @@
         width: 80%;
         height: 0px;
         border: 1px solid rgba(0, 0, 0, 0.3);
-        margin-top: -30px;
+        margin-top: -20px;
         margin-bottom: 10px;
     }
 
 
     .separacion{
         margin-top: 100px;
-        margin-bottom: 150px;
+        margin-bottom: 200px;
     }
 
     .uwu{
@@ -83,7 +83,7 @@
         background-color: #53E96B;
         font-size: 17px;
         width: 170px;
-        height: 75px;
+        height: 80px;
         border: none;
         border-radius: 16px;
         box-shadow: 0px 6px 4px #438A4F;
@@ -104,6 +104,10 @@
     .uwu:hover{
         background-color: #38c44f;
         box-shadow: 0px 6px 4px #296333;
+    }
+
+    .corte{
+        margin-top: -100px;
     }
 
 </style>
@@ -146,7 +150,7 @@
                 </div>
 
                 <div>
-                {{ form.email(class="form-control form-control-lg") }}
+                {{ form.email(class="form-control form-control-lg", style="text-align: left;", placeholder="password") }}
                 </div>
             </div>
 
@@ -159,20 +163,20 @@
                     {{ form.password.label(class="form-control-label") }}
                 </div>
                 <div>
-                    {{ form.password(class="form-control form-control-lg") }}
+                    {{ form.password(class="form-control form-control-lg", style="text-align: left;", placeholder="password") }}
                 </div>
             </div>
-        <div class="dou"></div>
 
         </fieldset>        
-        
-        <div class="contenedor-boton">
-            {{ form.submit(class="uwu") }}         
-        </div>
-        <div>
-            <small class="text-muted">
-            Dont you have an account, yet?<a class="ml-2" href="{{ url_for('register') }}">Sign Up</a> Here
-            </small>
+        <div class="corte">
+            <div class="contenedor-boton">
+                {{ form.submit(class="uwu") }}         
+            </div>
+            <div style="text-align: center;">
+                <small class="text-muted">
+                Dont you have an account, yet?<a class="ml-2" href="{{ url_for('register') }}">Sign Up</a> Here
+                </small>
+            </div>
         </div>
         </form>
     </div> 
