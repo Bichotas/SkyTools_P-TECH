@@ -136,12 +136,23 @@
 <div class="separacion"></div>
 <div class="contenedor">
     <div class="campo">
-        <form action="" method="POST">
-        
+        <form method="POST" action="" >
+            {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 55px;">
                 <div>
-                {{ form.username(class="form-control form-control-lg", style="text-align: center; border-radius: 11px", placeholder="Username") }}
+
+
+                {% if form.username.errors  %}
+                    {{ for.username(class="form-control form-control-lg is-invalid", style="text-align: center; border-radius: 11px") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg", style="text-align: center; border-radius: 11px", placeholder="Username") }}
+                {% endif %}
                 </div>
             </div>
             <div class="dou"></div>
