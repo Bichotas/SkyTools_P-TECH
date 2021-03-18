@@ -1,0 +1,193 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+
+<title>Register - BichotaS</title>
+
+{% endblock %}
+
+
+{% block styles %}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Signika;
+    }
+
+    body{
+        background: #c4c4c4;
+        
+    }
+
+    .contenedor{
+        
+        background-color: #F2F2F2;
+        width: 420px;
+        height: 430px;
+        border-radius: 16px;
+        display: block;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+    .campo{
+        color: black;
+        opacity: inherit;
+        position: relative;
+        font-family: signika;
+        
+    }
+
+    input{
+        outline: none;
+        border: none;
+        background-color: #F2F2F2;
+        font-size: 19px;
+        border-radius: 16px;
+        margin-top: 20px;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        display: inline-block;
+        margin-bottom: 50px;
+        
+    }
+    
+    #uno{
+        align-items: center;
+    }
+   
+
+    .dou{
+        margin-left: 10%;
+        width: 80%;
+        height: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    .separacion{
+        margin-top: 100px;
+        margin-bottom: 200px;
+    }
+
+    .uwu{
+        color: white;
+        background-color: #53E96B;
+        font-size: 17px;
+        width: 170px;
+        height: 75px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0px 6px 4px #438A4F;
+    }
+
+    .contenedor-boton{
+        display: block;
+        margin-top: 10%;
+        margin-left: 28%;
+    }    
+
+    .pd{
+        display: block;
+        margin-left: 12%;
+        margin-top: 5%;
+    }
+
+    .uwu:hover{
+        background-color: #38c44f;
+        box-shadow: 0px 6px 4px #296333;
+    }
+    
+
+</style>
+{% endblock %}
+
+{% block body %}
+<!--
+<div class="separacion"></div>
+<div class="contenedor">
+    <div class="campo"><form action="">
+        
+        <span><input type="text" name="username" placeholder="Username" ></span><br>
+        
+        <div class="dou"></div>
+        <span><input type="text" name="email" id="email" placeholder="Email"></span><br>
+        
+        <div class="dou"></div>
+        
+        </form>
+
+        <div class="contenedor-boton">
+            <button class="uwu">Inicia Sesión</button>
+            <div class="pd"><p>No tienes cuenta <br>Crea una<a href="#"> aqui</a></p></div>
+            
+        </div>
+    </div> 
+</div>
+-->
+
+<div class="separacion"></div>
+<div class="contenedor">
+    <div class="campo">
+        <form method="POST" action="" >
+            {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 55px;">
+                <div>
+
+
+                {% if form.username.errors  %}
+                    {{ for.username(class="form-control form-control-lg is-invalid", style="text-align: center; border-radius: 11px") }}
+                    <div class="invalid-feedback">
+                        {% for errors in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg", style="text-align: center; border-radius: 11px", placeholder="Username") }}
+                {% endif %}
+                </div>
+            </div>
+            <div class="dou"></div>
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                <div>
+                    {{ form.email(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Email") }}
+                </div>
+            </div>
+            <div class="dou"></div>
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                <div>
+                    {{ form.password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Password") }}
+                </div>
+            </div>
+            <div class="dou"></div>
+            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                <div>
+                    {{ form.confirm_password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Confirm") }}
+                </div>
+            </div>
+
+
+        </fieldset>        
+        <div class="corte">
+            <div class="contenedor-boton">
+                {{ form.submit(class="uwu") }}         
+            </div>
+            <div style="text-align: center;">
+                <small class="text-muted">
+                Already have an account?<a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                </small>
+            </div>
+        </div>
+        </form>
+    </div> 
+</div>
+
+{% endblock %}
