@@ -2,6 +2,8 @@ from flask import Flask, render_template, url_for, flash, redirect
 from forms import LoginForm, RegistrationForm
 from flask_sqlalchemy import SQLAlchemy
 
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY']='5d0a9f096785838c292e4212b9deba2a'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
@@ -9,20 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 db = SQLAlchemy(app)
 
-class User(db.Model):
-
-    __tablename__ = 'Cuentas'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), unique=False, nullable=False)
-    image_profile = db.Column(db.String(20), unique=False, default='default.jpg')
-
-
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_profile}')"
-
-db.create_all()
+from models import User
 @app.route('/')
 def main():
     return render_template('blank.html')
@@ -57,5 +46,7 @@ def about():
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
+
+
 if __name__== '__main__':
     app.run(debug=True)
