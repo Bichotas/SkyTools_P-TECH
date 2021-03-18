@@ -18,8 +18,53 @@
     }
 
     body{
-        background: #c4c4c4;
+       background-color: #f2f2f2;
         
+    }
+    .contenedor{
+        display: inline-block;
+        
+    }
+    .imagen{
+        position: relative;
+        border-radius: 50%;
+        width: 50%;
+        height: 50%;
+        margin-left: 10%;
+    }
+    .contenedor-textos{
+        display: inline-block;
+        margin-left: 5%;
+        margin-bottom: 20%;
+    }
+    .nombre-usuario{
+        font-family: Signika;
+        position: absolute;
+        display: inline-block;
+    }
+
+    .correo-usuario{
+        font-family: Signika;
+        position: absolute;
+        display: inline-block;
+        margin-top: 5%;
+    }
+
+    .contenedor-herramientas{
+        width: 400px;
+        height: 100px;
+        background-color: #c4c4c4;
+        display: block;
+        margin-left: 100%;
+        border-radius: 15px;
+        margin-top: 5%;
+    }
+    
+    .texto-herramientas{
+        font-family: Signika;
+        top: 100%;
+        left: 100%;
+        text-align: center;
     }
 </style>
 
@@ -28,7 +73,22 @@
 <!-- Bloque para el body -->
 {% block body %}
 
-div
+<div class="contenedor">
+    <img class="imagen" src="{{ url_for('static', filename='profile_ex.jpg') }}" alt="">
+    <div class="contenedor-textos">
+        <div class="nombre-usuario">
+            <h1>Martin Carlos</h1>
+        </div>
+        <div class="correo-usuario">
+            <h2>martin.carlos@gmail.com</h2>
+        </div>
+    </div>
+    <div class="contenedor-herramientas">
+        <div class="texto-herramientas">
+            Herramientas Favoritas  
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
