@@ -122,7 +122,7 @@
         <div class="separacion"></div>
         <div class="contenedor">
             <div class="campo">
-                <form method="POST" action="" >
+                <form method="POST" action="" enctype="multipart/form-data">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
                         <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
@@ -138,7 +138,13 @@
                         </div>
                         <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
                             <div>
+                                {{ form.picture.label() }}
                                 {{ form.picture(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Email") }}
+                                {% if form.picture.errors %}
+                                    {% for error in form.picture.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                     </fieldset>        
