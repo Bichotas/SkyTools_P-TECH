@@ -22,59 +22,104 @@
         
     }
 
-    .contenedor-header{
-        position: absolute;
-        width: 100%;
-        height: 35%;
-        display: block;
+    h1, h2, h3, h4, h5, h6 {
+    color: #141212;
+  }
+  
+  .bg-steel {
+    background-color: #5f788a;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 100px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-top: -20px;
+  }
+  
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 20%;
+    width: 20%;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 65px;
+  }
 
-    }
+  .spe{
+       margin-left: 5%;
+  }
 
-    .cont-imagen{
-        height: 80%;
-        width: 20%;
-        margin-top: 1.75%;
-        margin-left: 7%;
-        border-radius: 16px;
-    }
-
-    .cont-text-herramientas{
-        height: 50%;
-        width: 40%;
-        color: white;
-        display:inline-block;
-        margin-left: 60%;
-        margin-bottom: 50%;
-    }
-
-    .cols{
-        position: absolute;
-        margin-left: 30%;
-        margin-top: 10%;
-        height: 190px;
-        width: 500px;
-        text-align: center;
-    }
+  .ba-nom{
+      margin-left: 2.5%;
+      margin-top: 3%;
+  }
 </style>
 
 {% endblock %}
 
 <!-- Bloque para el body -->
 {% block body %}
-<div class="container" style="margin-left: -0.97%;">
-    <div class="contenedor-header">
-        <div class="cont-imagen">
-            <img class="container" style="border-radius: 50%;" src="{{ url_for('static', filename='profile_ex3.jpg') }}" alt="">
-        </div>
-    </div>
-    <div class="container">
-        <div class="cols">
-            <div class="container">
-                <h1>{{ current_user.username }}</h1>
-                <br>
-                <h2>Correo electronico</h2>
+    <div class="content-section" style="background-color: #c4c4c4;">
+        <div class="media">
+            <img class="rounded-circle account-img spe" src="{{ url_for('static', filename='profile_ex.jpg') }}" alt="EjemploImagen">
+            <div class="media-body ba-nom">
+                <h2 class="account-heading">{{ current_user.username }}</h2>
+                <p class="text-secondary" style="font-size: 28px; margin-left: 2%;">{{ current_user.email }}</p>
+                <button class="">Update profile</button>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
