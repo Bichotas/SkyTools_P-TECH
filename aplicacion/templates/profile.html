@@ -38,8 +38,8 @@
         border-radius: 16px;
     }
 
-    .cont-text{
-        height: 60%;
+    .cont-text-herramientas{
+        height: 50%;
         width: 40%;
         color: white;
         display:inline-block;
@@ -47,7 +47,14 @@
         margin-bottom: 50%;
     }
 
-    .bpx{position: absolute;}
+    .cols{
+        position: absolute;
+        margin-left: 30%;
+        margin-top: 10%;
+        height: 190px;
+        width: 500px;
+        text-align: center;
+    }
 </style>
 
 {% endblock %}
@@ -57,9 +64,17 @@
 <div class="container" style="margin-left: -0.97%;">
     <div class="contenedor-header">
         <div class="cont-imagen">
-            <img class="container" style="border-radius: 50%;" src="{{ url_for('static', filename='profile_ex2.jpg') }}" alt="">
+            <img class="container" style="border-radius: 50%;" src="{{ url_for('static', filename='profile_ex3.jpg') }}" alt="">
         </div>
-
+    </div>
+    <div class="container">
+        <div class="cols">
+            <div class="container">
+                <h1>Nombre Username</h1>
+                <br>
+                <h2>Correo electronico</h2>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
