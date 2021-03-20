@@ -138,43 +138,43 @@
     <div class="campo">
         <form method="POST" action="" >
             {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
-                <div>
-                    {{ form.username(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Username") }}
+            <fieldset class="form-group">
+                <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                    <div>
+                        {{ form.username(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Username") }}
+                    </div>
                 </div>
-            </div>
-            <div class="dou"></div>
-            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
-                <div>
-                    {{ form.email(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Email") }}
+                <div class="dou"></div>
+                <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                    <div>
+                        {{ form.email(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Email") }}
+                    </div>
                 </div>
-            </div>
-            <div class="dou"></div>
-            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
-                <div>
-                    {{ form.password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Password") }}
+                <div class="dou"></div>
+                <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                    <div>
+                        {{ form.password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Password") }}
+                    </div>
                 </div>
-            </div>
-            <div class="dou"></div>
-            <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
-                <div>
-                    {{ form.confirm_password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Confirm") }}
+                <div class="dou"></div>
+                <div class="fom-group" style="width: 80%; margin-left: 10%; margin-top: 30px;">
+                    <div>
+                        {{ form.confirm_password(class="form-control form-control-lg", style="text-align: center;  border-radius: 11px", placeholder="Confirm") }}
+                    </div>
                 </div>
-            </div>
 
 
-        </fieldset>        
-        <div class="corte">
-            <div class="contenedor-boton">
-                {{ form.submit(class="uwu") }}         
+            </fieldset>        
+            <div class="corte">
+                <div class="contenedor-boton">
+                    {{ form.submit(class="uwu") }}         
+                </div>
+                <div style="text-align: center;">
+                    <small class="text-muted">
+                    Already have an account?<a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+                    </small>
+                </div>
             </div>
-            <div style="text-align: center;">
-                <small class="text-muted">
-                Already have an account?<a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-                </small>
-            </div>
-        </div>
         </form>
     </div> 
 </div>
