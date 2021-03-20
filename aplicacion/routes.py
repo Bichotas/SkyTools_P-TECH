@@ -86,3 +86,8 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('account.html', image_file=image_file, form=form)
+
+
+@app.route('/prueba')
+def prueba():
+    return render_template('cuenta.html')
