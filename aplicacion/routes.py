@@ -1,9 +1,10 @@
+import secrets
+import os
 from flask import render_template, url_for, flash, redirect, request
 from aplicacion.models import User
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
-
 
 @app.route('/')
 def main():
@@ -54,15 +55,29 @@ def logout():
     logout_user()
     return redirect(url_for('main'))
 
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
+    form_picture.save(picture_path)
+    return picture_fn
+
+
+
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
     form = UpdatingAccountForm()
     if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_profile = picture_file
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('your account has been udpated', 'success')
+        flash('Your account has been udpated', 'success')
 
         return redirect(url_for('account'))
 
