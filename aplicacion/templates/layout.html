@@ -65,24 +65,23 @@
   </header>
 
       
+{% if current_user.is_authenticated %}
+  <div class="btn-group owo">
+    <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
+      Actividades <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu sing" role="sing">
 
-<!-- Pestaña de Actividades - Usando Botón 
-<div class="btn-group owo">
-  <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
-    Actividades <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu sing" role="sing">
 
+      
+      <li><button class="soso">Añadir tarea</button>
+      </li>
+      <div class="hacheR"></div>
+  
 
-    
-    <li><button class="soso">Añadir tarea</button>
-    </li>
-    <div class="hacheR"></div>
- 
-
-  </ul>
-</div>
--->
+    </ul>
+  </div>
+{% endif %}
 
 
     {% with messages = get_flashed_messages(with_categories=true) %}
