@@ -20,3 +20,11 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_profile}')"
+
+
+class BarraHerramientas(db.Model):
+
+    __tablename__ = 'BarraDeHerramientas'
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(200))
+
