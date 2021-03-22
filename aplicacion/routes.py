@@ -96,3 +96,8 @@ def update():
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('update.html', image_file=image_file, form=form)
 
+
+
+@app.route('/bar')
+def bar():
+    return render_template('index.html')
