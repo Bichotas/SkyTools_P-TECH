@@ -29,6 +29,62 @@
        .navbar{
         background-color: grey !important;
       }
+      .owo{
+        position: absolute;
+        top: 50%;
+        left: -5.75%;
+        
+      }
+      .rotates{
+        transform: rotate(-90deg);
+        width: 250px;
+        height: 48px;
+        border-radius: 13px;
+
+      }
+
+      .sing{
+        background-color: #c4c4c4;
+        position: absolute;
+        transform: rotate(-90deg);
+        width: 600px;
+        height: 300px;
+        border-radius: 13px;
+        left: -1%;
+        margin-top: -60%;
+
+      }
+
+
+/** Clase para botón de agregar activdad **/
+      .soso{
+        position: absolute;
+        transform: rotate(90deg);
+        top: 45%;
+        left: 85%;
+        border: none;
+        border-radius: 11px;
+        background-color: #AAAAAA;
+        height: 40px;
+        width: 120px;
+
+      }
+
+      .hacheR{
+        transform: rotate(90deg);
+        height: 5px;
+        width: 250px;
+      }
+
+      .soso:hover{
+        background-color: #f4f3f3;
+      }
+
+      .respon{
+        position: relative;
+        margin-top: 50%;
+        width:380px;
+      }
     /** Inicio de parte de bloque en el cual se va a poder a escribir clases en otra plantilla **/
     {% block styles %}
 
@@ -73,31 +129,31 @@
 {% if current_user.is_authenticated %}
   <div class="btn-group owo">
     <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
-      Actividades <span class="caret"></span>
+      Actividades
     </button>
     <ul class="dropdown-menu" role="sing">
-      <div class="container-u">
-        <div class="header">
-            <div class="clear">
-                <i class="fa fa-refresh co"></i>
-            </div>
-            <div id="date"></div>
+        <div class="container-u">
+          <div class="header">
+              <div class="clear">
+                  <i class="fa fa-refresh co"></i>
+              </div>
+              <div id="date"></div>
+          </div>
+          <div class="content">
+              <ul id="list">
+                <!-- 
+                  <li class="item">
+                      <i class="fa fa-circle-thin co" job="complete" id="0"></i>
+                      <p class="text">Drink Coffee</p>
+                      <i class="fa fa-trash-o de" job="delete" id="0"></i> 
+                  </li> -->
+              </ul>
+          </div>
+          <div class="add-to-do">
+              <i class="fa fa-plus-circle"></i>
+              <input type="text" id="input" placeholder="Add a to-do">
+          </div>
         </div>
-        <div class="content">
-            <ul id="list">
-               <!-- 
-                <li class="item">
-                    <i class="fa fa-circle-thin co" job="complete" id="0"></i>
-                    <p class="text">Drink Coffee</p>
-                    <i class="fa fa-trash-o de" job="delete" id="0"></i> 
-                </li> -->
-            </ul>
-        </div>
-        <div class="add-to-do">
-            <i class="fa fa-plus-circle"></i>
-            <input type="text" id="input" placeholder="Add a to-do">
-        </div>
-    </div>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
     </ul>
