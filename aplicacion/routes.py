@@ -107,13 +107,18 @@ def index():
 
     return render_template('index.html', incomplete=incomplete, complete=complete)
 
+
+def cont(dos):
+    if not dos == 2:
+        return False
+
+
 @app.route('/add', methods=['POST'])
 def add():
     todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
     db.session.commit()
 
-    return redirect(url_for('index'))
 
 @app.route('/complete/<id>')
 def complete(id):
@@ -121,7 +126,6 @@ def complete(id):
     todo = Todo.query.filter_by(id=int(id)).first()
     todo.complete = True
     db.session.commit()
-    
     return redirect(url_for('index'))
 
 @app.route('/delete/<id>')
@@ -147,7 +151,7 @@ def clear():
 
 def usuario_db():
     if current_user.is_authenticated:
-        user = current_user.username
-    print(user)
+        user_db = current_user.username
+    print(user_db)
     
-    return user
+    return user_db
