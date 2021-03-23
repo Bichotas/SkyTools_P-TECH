@@ -98,6 +98,6 @@ def update():
 
 
 
-@app.route('/bar')
+@app.route('/barra')
 def bar():
     return render_template('index.html')
