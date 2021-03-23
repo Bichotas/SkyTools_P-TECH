@@ -9,6 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
 def main():
+    
     return render_template('blank.html')
 
 
@@ -143,3 +144,10 @@ def clear():
     db.session.query(Todo).delete()
     db.session.commit()
     return redirect(url_for('index'))
+
+def usuario_db():
+    if current_user.is_authenticated:
+        user = current_user.username
+    print(user)
+    
+    return user
