@@ -20,3 +20,15 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_profile}')"
+
+
+# Modelo para hcer la tabla en la base de datos
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(200))
+    complete = db.Column(db.Boolean)
+    
+    def __repr__(self):
+        return f"Actividad('{self.text}', '{self.complete}')"
+
