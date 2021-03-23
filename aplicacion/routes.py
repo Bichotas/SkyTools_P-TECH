@@ -1,7 +1,7 @@
 import secrets
 import os
 from flask import render_template, url_for, flash, redirect, request
-from aplicacion.models import User
+from aplicacion.models import User, Todo
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -98,6 +98,48 @@ def update():
 
 
 
-@app.route('/bar')
-def bar():
-    return render_template('index.html')
+""" Rutas para barra de herramientas """
+@app.route('/uwu')
+def index():
+    incomplete = Todo.query.filter_by(complete=False).all()
+    complete = Todo.query.filter_by(complete=True).all()
+
+    return render_template('index.html', incomplete=incomplete, complete=complete)
+
+@app.route('/add', methods=['POST'])
+def add():
+    todo = Todo(text=request.form['todoitem'], complete=False)
+    db.session.add(todo)
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
+@app.route('/complete/<id>')
+def complete(id):
+
+    todo = Todo.query.filter_by(id=int(id)).first()
+    todo.complete = True
+    db.session.commit()
+    
+    return redirect(url_for('index'))
+
+@app.route('/delete/<id>')
+def delete(id):
+    db.session.query(Todo).filter(Todo.id==id).delete()
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
+@app.route('/incomplete/<id>')
+def incomplete(id):
+    todo = Todo.query.filter_by(id=int(id)).first()
+    todo.complete = False
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
+@app.route('/clear')
+def clear():
+    db.session.query(Todo).delete()
+    db.session.commit()
+    return redirect(url_for('index'))
