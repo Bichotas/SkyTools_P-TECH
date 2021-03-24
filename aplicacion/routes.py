@@ -144,7 +144,11 @@ def add():
     actividadesBarra = Actividades(contenedor, string_V)
     lista_act =actividadesBarra.lista()
     fe_cadena = actividadesBarra.cadena()
+    todo = Todo(text=fe_cadena, complete=False)
+    db.session.add(todo)
+    db.session.commit()
     print(lista_act, fe_cadena)
+    
     return redirect(url_for('index'))
 
 
