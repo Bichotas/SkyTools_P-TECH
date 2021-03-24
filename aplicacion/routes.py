@@ -108,16 +108,12 @@ def index():
     return render_template('index.html', incomplete=incomplete, complete=complete)
 
 
-def cont(dos):
-    if not dos == 2:
-        return False
-
-
 @app.route('/add', methods=['POST'])
 def add():
-    todo = Todo(text=request.form['todoitem'], complete=False)
+    """todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
-    db.session.commit()
+    db.session.commit()"""
+    return redirect(url_for('index'))
 
 
 @app.route('/complete/<id>')
