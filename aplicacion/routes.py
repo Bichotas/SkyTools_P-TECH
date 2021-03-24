@@ -2,7 +2,7 @@ import secrets
 import os
 from flask import render_template, url_for, flash, redirect, request
 from aplicacion.models import User, Todo
-from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm
+from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -109,7 +109,7 @@ class Actividades:
         return self.contenedor
 """
 
-
+""" Clase para input sin usar la clase wtf
 class Actividades:
 
     def __init__(self, contenedor, strinV):
@@ -125,14 +125,17 @@ class Actividades:
     def cadena(self):
         self.strinV = "-".join(self.contenedor)
         return self.strinV
-    
+    """
+
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
     incomplete = Todo.query.filter_by(complete=False).all()
     complete = Todo.query.filter_by(complete=True).all()
 
-    return render_template('index.html', incomplete=incomplete, complete=complete)
+    #Parte con fumalrio wtf
+    form = ActividadesInput()
+    return render_template('index.html', incomplete=incomplete, complete=complete, form=form)
 
 contenedor = []
 string_V = ""
@@ -141,18 +144,27 @@ def add():
     """todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
     db.session.commit()"""
-    actividadesBarra = Actividades(contenedor, string_V)
+
+    #Parte sin flask-wtf
+    """ctividadesBarra = Actividades(contenedor, string_V)
     lista_act =actividadesBarra.lista()
     fe_cadena = actividadesBarra.cadena()
-    id_user = int(current_user.get_id())
+    id_user = int(current_user.get_id())"""
 
+    #Parte con formulario
 
+    form = ActividadesInput()
+    if current_user.is_authenticated:
+        if form.validate_on_submit():
+            id_user = current_user.get_id()
+            texto = form.text.data
+    print(texto)
     # Parte en la que se agrega un campo por uno
-    todo = Todo(text=fe_cadena, complete=False)
-    id_user = current_user.get_id()
-    db.session.add(todo)
-    db.session.commit()
-    print(lista_act, fe_cadena, id_user)
+    #todo = Todo(text=texto, complete=False)
+    #id_user = current_user.get_id()
+    #db.session.add(todo)
+    #db.session.commit()
+    #print(lista_act, fe_cadena, id_user)
     
     return redirect(url_for('index'))
 
@@ -161,34 +173,33 @@ def add():
 def complete(id):
 
     todo = Todo.query.filter_by(id=int(id)).first()
+    #Parte con el formulario
+    form = ActividadesInput()
     todo.complete = True
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/delete/<id>')
 def delete(id):
+    form = ActividadesInput()
     db.session.query(Todo).filter(Todo.id==id).delete()
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/incomplete/<id>')
 def incomplete(id):
     todo = Todo.query.filter_by(id=int(id)).first()
+    form = ActividadesInput()
     todo.complete = False
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/clear')
 def clear():
+    form = ActividadesInput()
     db.session.query(Todo).delete()
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
-def usuario_db():
-    if current_user.is_authenticated:
-        user_db = current_user.username
-    print(user_db)
-    
-    return user_db
