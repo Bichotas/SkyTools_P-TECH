@@ -98,7 +98,34 @@ def update():
     return render_template('update.html', image_file=image_file, form=form)
 
 
+""" Version  1
+class Actividades:
+    def __init__(self, contenedor):
+        self.contenedor = contenedor
 
+    def cont(self):
+        actividad = request.form['todoitem']
+        self.contenedor = self.contenedor + "-" + actividad
+        return self.contenedor
+"""
+
+
+class Actividades:
+
+    def __init__(self, contenedor, strinV):
+        self.contenedor = contenedor
+        self.strinV = strinV
+
+
+    def lista(self):
+        inputo = request.form['todoitem']
+        self.contenedor.append(inputo)
+        return self.contenedor
+
+    def cadena(self):
+        self.strinV = "-".join(self.contenedor)
+        return self.strinV
+    
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
@@ -107,12 +134,17 @@ def index():
 
     return render_template('index.html', incomplete=incomplete, complete=complete)
 
-
+contenedor = []
+string_V = ""
 @app.route('/add', methods=['POST'])
 def add():
     """todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
     db.session.commit()"""
+    actividadesBarra = Actividades(contenedor, string_V)
+    lista_act =actividadesBarra.lista()
+    fe_cadena = actividadesBarra.cadena()
+    print(lista_act, fe_cadena)
     return redirect(url_for('index'))
 
 
