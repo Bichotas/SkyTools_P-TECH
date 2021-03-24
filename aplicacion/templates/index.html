@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="clear">
+                <a href="{{ url_for('clear') }}"><p class="fa fa-refresh"></p></a>
+            </div>
+            <div id="date"></div>
+        </div>
+        <div class="content">
+            <ul>
+                {% for todo in incomplete %}
+
+                <a href="{{ url_for('complete', id=todo.id) }}"><i class="fa fa-circle-thin de"></i></a>
+                <p class="text">{{ todo.text }}</p>
+                <a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de"></i></a>
+                <!--
+                <p style="display: inline;"><a href="{{ url_for('complete', id=todo.id) }}"></a>Mark As Complete</a></p><li style="font-size: 30pt">{{ todo.text }}<a href="{{ url_for('delete', id=todo.id) }}"></a> -Delete</a> </li>-->
+                {% endfor %}    
+            </ul>
+            <ul>
+                {% for todo in complete %}
+
+                <p class="text lineThrough">{{ todo.text }}</p>
+                <a href="{{ url_for('incomplete', id=todo.id) }}"><i class="fa fa-check-circle co"></i></a>
+                <!--
+                <p style="display: inline;"><a href="{{ url_for('complete', id=todo.id) }}"></a>Mark As Complete</a></p><li style="font-size: 30pt">{{ todo.text }}<a href="{{ url_for('delete', id=todo.id) }}"></a> -Delete</a> </li>-->
+                {% endfor %}    
+            </ul>
+        </div>
+        <div class="add-to-do">
+            <i class="fa fa-plus-circle"></i>
+            <form action="{{ url_for('add') }}" method="POST">
+                <input type="text" name="todoitem" placeholder="Add to">
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
