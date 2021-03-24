@@ -158,7 +158,15 @@ def add():
         if form.validate_on_submit():
             id_user = current_user.get_id()
             texto = form.text.data
+            
+        contenedor.append(texto)
+        string_V = " - ".join(contenedor)
+        todo = Todo(text=string_V, complete=False)
+        db.session.add(todo)
+        db.session.commit()
+    print(contenedor)
     print(texto)
+    print(string_V)
     # Parte en la que se agrega un campo por uno
     #todo = Todo(text=texto, complete=False)
     #id_user = current_user.get_id()
