@@ -144,10 +144,15 @@ def add():
     actividadesBarra = Actividades(contenedor, string_V)
     lista_act =actividadesBarra.lista()
     fe_cadena = actividadesBarra.cadena()
+    id_user = int(current_user.get_id())
+
+
+    # Parte en la que se agrega un campo por uno
     todo = Todo(text=fe_cadena, complete=False)
+    id_user = current_user.get_id()
     db.session.add(todo)
     db.session.commit()
-    print(lista_act, fe_cadena)
+    print(lista_act, fe_cadena, id_user)
     
     return redirect(url_for('index'))
 
