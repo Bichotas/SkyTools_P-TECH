@@ -2,13 +2,14 @@ import secrets
 import os
 from flask import render_template, url_for, flash, redirect, request
 from aplicacion.models import User, Todo
-from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm
+from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route('/')
 def main():
+    
     return render_template('blank.html')
 
 
@@ -97,6 +98,34 @@ def update():
     return render_template('update.html', image_file=image_file, form=form)
 
 
+""" Version  1
+class Actividades:
+    def __init__(self, contenedor):
+        self.contenedor = contenedor
+
+    def cont(self):
+        actividad = request.form['todoitem']
+        self.contenedor = self.contenedor + "-" + actividad
+        return self.contenedor
+"""
+
+""" Clase para input sin usar la clase wtf
+class Actividades:
+
+    def __init__(self, contenedor, strinV):
+        self.contenedor = contenedor
+        self.strinV = strinV
+
+
+    def lista(self):
+        inputo = request.form['todoitem']
+        self.contenedor.append(inputo)
+        return self.contenedor
+
+    def cadena(self):
+        self.strinV = "-".join(self.contenedor)
+        return self.strinV
+    """
 
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
@@ -104,42 +133,81 @@ def index():
     incomplete = Todo.query.filter_by(complete=False).all()
     complete = Todo.query.filter_by(complete=True).all()
 
-    return render_template('index.html', incomplete=incomplete, complete=complete)
+    #Parte con fumalrio wtf
+    form = ActividadesInput()
+    return render_template('index.html', incomplete=incomplete, complete=complete, form=form)
 
+contenedor = []
+string_V = ""
 @app.route('/add', methods=['POST'])
 def add():
-    todo = Todo(text=request.form['todoitem'], complete=False)
+    """todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
-    db.session.commit()
+    db.session.commit()"""
 
+    #Parte sin flask-wtf
+    """ctividadesBarra = Actividades(contenedor, string_V)
+    lista_act =actividadesBarra.lista()
+    fe_cadena = actividadesBarra.cadena()
+    id_user = int(current_user.get_id())"""
+
+    #Parte con formulario
+
+    form = ActividadesInput()
+    if current_user.is_authenticated:
+        if form.validate_on_submit():
+            id_user = current_user.get_id()
+            texto = form.text.data
+            
+        contenedor.append(texto)
+        string_V = " - ".join(contenedor)
+        todo = Todo(text=string_V, complete=False)
+        db.session.add(todo)
+        db.session.commit()
+    print(contenedor)
+    print(texto)
+    print(string_V)
+    # Parte en la que se agrega un campo por uno
+    #todo = Todo(text=texto, complete=False)
+    #id_user = current_user.get_id()
+    #db.session.add(todo)
+    #db.session.commit()
+    #print(lista_act, fe_cadena, id_user)
+    
     return redirect(url_for('index'))
+
 
 @app.route('/complete/<id>')
 def complete(id):
 
     todo = Todo.query.filter_by(id=int(id)).first()
+    #Parte con el formulario
+    form = ActividadesInput()
     todo.complete = True
     db.session.commit()
-    
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/delete/<id>')
 def delete(id):
+    form = ActividadesInput()
     db.session.query(Todo).filter(Todo.id==id).delete()
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/incomplete/<id>')
 def incomplete(id):
     todo = Todo.query.filter_by(id=int(id)).first()
+    form = ActividadesInput()
     todo.complete = False
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
 
 @app.route('/clear')
 def clear():
+    form = ActividadesInput()
     db.session.query(Todo).delete()
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), form=form)
+
