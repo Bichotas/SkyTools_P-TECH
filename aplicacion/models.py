@@ -6,8 +6,6 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-<<<<<<< HEAD
-=======
 class Todo(db.Model):
     __tablename__ = 'todo'
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +14,6 @@ class Todo(db.Model):
     
     def __repr__(self):
         return f"Actividad('{self.text}', '{self.complete}')"
->>>>>>> 1aa5d93d909c1d53cff9f5659cd5bbd7a7fbfde5
 
 class User(db.Model, UserMixin):
 
