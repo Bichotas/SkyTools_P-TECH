@@ -1,7 +1,7 @@
 import secrets
 import os
 from flask import render_template, url_for, flash, redirect, request
-from aplicacion.models import User, Todo
+from aplicacion.models import User, Todo, unu
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -139,6 +139,7 @@ def index():
 
 contenedor = []
 string_V = ""
+
 @app.route('/add', methods=['POST'])
 def add():
     """todo = Todo(text=request.form['todoitem'], complete=False)
@@ -152,18 +153,21 @@ def add():
     id_user = int(current_user.get_id())"""
 
     #Parte con formulario
-
+    
     form = ActividadesInput()
+    usuario_actual = current_user.username
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
             texto = form.text.data
-            
         contenedor.append(texto)
         string_V = " - ".join(contenedor)
         todo = Todo(text=string_V, complete=False)
         db.session.add(todo)
         db.session.commit()
+
+
+
     print(contenedor)
     print(texto)
     print(string_V)
