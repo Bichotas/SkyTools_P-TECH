@@ -1,7 +1,7 @@
 import secrets
 import os
 from flask import render_template, url_for, flash, redirect, request
-from aplicacion.models import User, Todo, unu
+from aplicacion.models import User, Todo
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -130,12 +130,12 @@ class Actividades:
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
-    incomplete = Todo.query.filter_by(complete=False).all()
-    complete = Todo.query.filter_by(complete=True).all()
+    incomplete = Todo.query.filter_by().all()
+    
 
     #Parte con fumalrio wtf
     form = ActividadesInput()
-    return render_template('index.html', incomplete=incomplete, complete=complete, form=form)
+    return render_template('index.html', incomplete=incomplete, form=form)
 
 contenedor = []
 string_V = ""
@@ -156,15 +156,25 @@ def add():
     
     form = ActividadesInput()
     usuario_actual = current_user.username
+    id_user = current_user.get_id()
+    esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
+    if esp_blanco == None:
+        blanco = Todo(text="")
+        db.session.commit()
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
             texto = form.text.data
-        contenedor.append(texto)
-        string_V = " - ".join(contenedor)
-        todo = Todo(text=string_V, complete=False)
-        db.session.add(todo)
-        db.session.commit()
+            contenedor.append(texto)
+            string_V = " - ".join(contenedor)
+            barra = db.session.query(Todo).filter(Todo.id == id_user).update(
+                {
+                    Todo.text: string_V
+                }
+            )
+            db.session.commit()
+            
+        
 
 
 
@@ -203,7 +213,6 @@ def delete(id):
 def incomplete(id):
     todo = Todo.query.filter_by(id=int(id)).first()
     form = ActividadesInput()
-    todo.complete = False
     db.session.commit()
 
     return redirect(url_for('index'), form=form)
