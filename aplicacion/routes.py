@@ -15,12 +15,20 @@ def main():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    
     if current_user.is_authenticated:
         return redirect(url_for('main'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        id_user = current_user.get_id()
+        esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
+        print(esp_blanco)
+        if esp_blanco == None:
+            blanco = Todo(text="")
+            db.session.add(blanco)
+            db.session.commit()
         db.session.add(user)
         db.session.commit()
         flash(f'Your account has been created! You are now able to log in', 'success')
@@ -132,7 +140,6 @@ class Actividades:
 def index():
     incomplete = Todo.query.filter_by().all()
     
-
     #Parte con fumalrio wtf
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
@@ -157,10 +164,13 @@ def add():
     form = ActividadesInput()
     usuario_actual = current_user.username
     id_user = current_user.get_id()
-    esp_blanco = db.session.query(Todo).filter(Todo.id == id_user)
-    if esp_blanco == None:
+    id_user = current_user.get_id()
+    esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
+    print(esp_blanco)
+    """if esp_blanco == None:
         blanco = Todo(text="")
-        db.session.commit()
+        db.session.add(blanco)
+        db.session.commit()"""
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
