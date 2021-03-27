@@ -157,7 +157,7 @@ def add():
     form = ActividadesInput()
     usuario_actual = current_user.username
     id_user = current_user.get_id()
-    esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
+    esp_blanco = db.session.query(Todo).filter(Todo.id == id_user)
     if esp_blanco == None:
         blanco = Todo(text="")
         db.session.commit()
