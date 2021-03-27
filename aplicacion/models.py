@@ -12,7 +12,7 @@ class Todo(db.Model):
     text = db.Column(db.String(200))
 
     def __repr__(self):
-        return f"Actividad('{self.text}', '{self.complete}')"
+        return f"Actividad('{self.text}')"
 
 class User(db.Model, UserMixin):
 
