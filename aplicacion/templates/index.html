@@ -25,15 +25,6 @@
                 <p style="display: inline;"><a href="{{ url_for('complete', id=todo.id) }}"></a>Mark As Complete</a></p><li style="font-size: 30pt">{{ todo.text }}<a href="{{ url_for('delete', id=todo.id) }}"></a> -Delete</a> </li>-->
                 {% endfor %}    
             </ul>
-            <ul>
-                {% for todo in complete %}
-
-                <p class="text lineThrough">{{ todo.text }}</p>
-                <a href="{{ url_for('incomplete', id=todo.id) }}"><i class="fa fa-check-circle co"></i></a>
-                <!--
-                <p style="display: inline;"><a href="{{ url_for('complete', id=todo.id) }}"></a>Mark As Complete</a></p><li style="font-size: 30pt">{{ todo.text }}<a href="{{ url_for('delete', id=todo.id) }}"></a> -Delete</a> </li>-->
-                {% endfor %}    
-            </ul>
         </div>
         <div class="add-to-do">
             <i class="fa fa-plus-circle"></i>
