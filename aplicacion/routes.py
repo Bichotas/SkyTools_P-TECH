@@ -19,6 +19,7 @@ def register():
         return redirect(url_for('main'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        id_user = current_user.get_id()
         esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
         if esp_blanco == None:
             blanco = Todo(text="")
@@ -180,11 +181,6 @@ def add():
                 }
             )
             db.session.commit()
-            
-        
-
-
-
     print(contenedor)
     print(texto)
     print(string_V)
@@ -196,7 +192,6 @@ def add():
     #print(lista_act, fe_cadena, id_user)
     
     return redirect(url_for('index'))
-
 
 @app.route('/complete/<id>')
 def complete(id):
