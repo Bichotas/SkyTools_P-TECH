@@ -1,11 +1,11 @@
 import secrets
 import os
+
 from flask import render_template, url_for, flash, redirect, request
 from aplicacion.models import User, Todo
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
-
 
 @app.route('/')
 def main():
@@ -108,6 +108,11 @@ def update():
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('update.html', image_file=image_file, form=form)
 
+@app.route('/chatbot')
+def chatbot():
+    form = ActividadesInput()
+    incomplete = Todo.query.filter_by().all()
+    return render_template('chatbot.html', form=form, incomplete=incomplete)
 
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
@@ -116,22 +121,12 @@ def index():
     #Parte con fumalrio wtf
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
-
+    
 contenedor = []
 string_V = ""
-
+a = app
 @app.route('/add', methods=['POST'])
 def add():
-    """todo = Todo(text=request.form['todoitem'], complete=False)
-    db.session.add(todo)
-    db.session.commit()"""
-
-    #Parte sin flask-wtf
-    """ctividadesBarra = Actividades(contenedor, string_V)
-    lista_act =actividadesBarra.lista()
-    fe_cadena = actividadesBarra.cadena()
-    id_user = int(current_user.get_id())"""
-
     #Parte con formulario
     
     form = ActividadesInput()
@@ -158,14 +153,9 @@ def add():
     print(contenedor)
     print(texto)
     print(string_V)
-    # Parte en la que se agrega un campo por uno
-    #todo = Todo(text=texto, complete=False)
-    #id_user = current_user.get_id()
-    #db.session.add(todo)
-    #db.session.commit()
-    #print(lista_act, fe_cadena, id_user)
+    print(redirect(request.url))
+    return redirect(url_for('main'))
     
-    return redirect(url_for('index'))
 
 @app.route('/complete/<id>')
 def complete(id):
