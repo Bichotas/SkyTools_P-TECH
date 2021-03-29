@@ -17,7 +17,6 @@
         <div class="content">
             <ul>
                 {% for todo in incomplete %}
-
                 <a href="{{ url_for('complete', id=todo.id) }}"><i class="fa fa-circle-thin de"></i></a>
                 <p class="text">{{ todo.text }}</p>
                 <a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de"></i></a>
@@ -42,7 +41,6 @@
                 <div>
                 <!--<input type="text" name="todoitem" placeholder="Add to">-->
                     {{ form.text() }}
-                    
                 </div>
             </form>
         </div>
