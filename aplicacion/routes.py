@@ -9,7 +9,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
 def main():
-    incomplete = Todo.query.filter_by().all()
+    id_user = current_user.get_id()
+    incomplete = Todo.query.filter(Todo.id == id_user).all()
     form = ActividadesInput()
     return render_template('blank.html', incomplete=incomplete, form=form)
 
