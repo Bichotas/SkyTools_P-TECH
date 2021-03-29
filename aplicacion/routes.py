@@ -125,7 +125,7 @@ def index():
     
 contenedor = []
 string_V = ""
-a = app
+
 @app.route('/add', methods=['POST'])
 def add():
     #Parte con formulario
@@ -151,10 +151,6 @@ def add():
                 }
             )
             db.session.commit()
-    print(contenedor)
-    print(texto)
-    print(string_V)
-    print(redirect(request.url))
     return redirect(url_for('main'))
     
 
