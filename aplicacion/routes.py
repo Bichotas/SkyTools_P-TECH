@@ -9,8 +9,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route('/')
 def main():
+    incomplete = Todo.query.filter_by().all()
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    return render_template('blank.html', incomplete=incomplete, form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -51,7 +52,9 @@ def login():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    incomplete = Todo.query.filter_by().all()
+    form = ActividadesInput()
+    return render_template('about.html', incomplete=incomplete, form=form)
 
 
 @app.route('/profile')
@@ -77,9 +80,11 @@ def save_picture(form_picture):
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    form = UpdatingAccountForm()
+    incomplete = Todo.query.filter_by().all()
+    form = ActividadesInput()
+    a = UpdatingAccountForm()
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
-    return render_template('profile.html', image_file=image_file, form=form)
+    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=incomplete)
 
 
 # Ruta para actualizar datos 
@@ -104,41 +109,10 @@ def update():
     return render_template('update.html', image_file=image_file, form=form)
 
 
-""" Version  1
-class Actividades:
-    def __init__(self, contenedor):
-        self.contenedor = contenedor
-
-    def cont(self):
-        actividad = request.form['todoitem']
-        self.contenedor = self.contenedor + "-" + actividad
-        return self.contenedor
-"""
-
-""" Clase para input sin usar la clase wtf
-class Actividades:
-
-    def __init__(self, contenedor, strinV):
-        self.contenedor = contenedor
-        self.strinV = strinV
-
-
-    def lista(self):
-        inputo = request.form['todoitem']
-        self.contenedor.append(inputo)
-        return self.contenedor
-
-    def cadena(self):
-        self.strinV = "-".join(self.contenedor)
-        return self.strinV
-    """
-
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
     incomplete = Todo.query.filter_by().all()
-    
-
     #Parte con fumalrio wtf
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
@@ -224,5 +198,4 @@ def clear():
     form = ActividadesInput()
     db.session.query(Todo).delete()
     db.session.commit()
-    return redirect(url_for('index'), form=form)
-
+    return redirect(url_for('index'), form=form)    
