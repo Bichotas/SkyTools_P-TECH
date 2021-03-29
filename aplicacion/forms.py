@@ -62,3 +62,7 @@ class UpdatingAccountForm(FlaskForm):
                 raise ValidationError('That email is taken. Please choose another one')  
 
             
+class ActividadesInput(FlaskForm):
+
+    text = StringField('Texto', validators=[DataRequired(), Length(min=2, max=100)])
+    submit = SubmitField('Add')
