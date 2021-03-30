@@ -7,6 +7,18 @@ from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, A
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
+
+def addon(lista, nuevo):
+    aux = lista[0]
+    lista[0] = nuevo
+    lista[1] = aux
+    return lista
+lista = ["",""]
+@app.before_request
+def before_request():
+    new = request.endpoint
+    print(addon(lista, new))
+    
 @app.route('/')
 def main():
     incomplete = Todo.query.filter_by().all()
@@ -123,9 +135,9 @@ def index():
 
 contenedor = []
 string_V = ""
-a = app
 @app.route('/add', methods=['POST'])
 def add():
+
     #Parte con formulario
     form = ActividadesInput()
     usuario_actual = current_user.username
