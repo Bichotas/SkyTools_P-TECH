@@ -10,15 +10,22 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 def addon(lista, nuevo):
     aux = lista[0]
-    lista[0] = nuevo
+    if not nuevo == 'add':
+        lista[0] = nuevo
     lista[1] = aux
     return lista
+
+
 lista = ["",""]
+
+
 @app.before_request
 def before_request():
     new = request.endpoint
-    print(addon(lista, new))
-    
+    g.lista_dou = addon(lista, new)
+    print(g.lista_dou)
+
+     
 @app.route('/')
 def main():
     incomplete = Todo.query.filter_by().all()
@@ -137,7 +144,7 @@ contenedor = []
 string_V = ""
 @app.route('/add', methods=['POST'])
 def add():
-
+    follana = g.lista_dou 
     #Parte con formulario
     form = ActividadesInput()
     usuario_actual = current_user.username
@@ -156,7 +163,7 @@ def add():
                 }
             )
             db.session.commit()
-    return redirect(url_for('main'))
+    return redirect(url_for(follana[0]))
     
 
 @app.route('/complete/<id>')
