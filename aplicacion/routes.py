@@ -7,23 +7,6 @@ from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, A
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
-@app.before_request
-def before_request():
-    print(request.path)
-    if not request.path == '/add':
-        if request.path == '/':
-            g.uwu = 'main'
-        elif request.path == '/about':
-            g.uwu = 'about'
-        elif request.path == '/chatbot':
-            g.uwu = 'chatbot'
-        elif request.path == '/account':
-            g.uwu = 'account'
-    else: 
-        pass
-    """ruta_red = g.uwu[1:]
-    print(ruta_red)"""
-
 @app.route('/')
 def main():
     incomplete = Todo.query.filter_by().all()
@@ -131,20 +114,18 @@ def chatbot():
     return render_template('chatbot.html', form=form, incomplete=incomplete)
 
 """ Rutas para barra de herramientas """
-"""
 @app.route('/uwu')
 def index():
     incomplete = Todo.query.filter_by().all()
     #Parte con fumalrio wtf
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
-"""
+
 contenedor = []
 string_V = ""
 a = app
 @app.route('/add', methods=['POST'])
 def add():
-    dou = g.uwu
     #Parte con formulario
     form = ActividadesInput()
     usuario_actual = current_user.username
@@ -163,10 +144,7 @@ def add():
                 }
             )
             db.session.commit()
-    print(contenedor)
-    print(texto)
-    print(string_V)
-    return redirect(url_for(dou))
+    return redirect(url_for('main'))
     
 
 @app.route('/complete/<id>')
