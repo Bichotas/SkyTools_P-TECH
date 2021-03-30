@@ -1,18 +1,34 @@
 import secrets
 import os
 
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, g
 from aplicacion.models import User, Todo
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+
+@app.before_request
+def before_request():
+    print(request.path)
+    if not request.path == '/add':
+        if request.path == '/':
+            g.uwu = 'main'
+        elif request.path == '/about':
+            g.uwu = 'about'
+        elif request.path == '/chatbot':
+            g.uwu = 'chatbot'
+        elif request.path == '/account':
+            g.uwu = 'account'
+    else: 
+        pass
+    """ruta_red = g.uwu[1:]
+    print(ruta_red)"""
 
 @app.route('/')
 def main():
     incomplete = Todo.query.filter_by().all()
     form = ActividadesInput()
     return render_template('blank.html', incomplete=incomplete, form=form)
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -115,29 +131,26 @@ def chatbot():
     return render_template('chatbot.html', form=form, incomplete=incomplete)
 
 """ Rutas para barra de herramientas """
+"""
 @app.route('/uwu')
 def index():
     incomplete = Todo.query.filter_by().all()
     #Parte con fumalrio wtf
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
-    
+"""
 contenedor = []
 string_V = ""
 a = app
 @app.route('/add', methods=['POST'])
 def add():
+    dou = g.uwu
     #Parte con formulario
-    
     form = ActividadesInput()
     usuario_actual = current_user.username
     id_user = current_user.get_id()
     esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
     print(esp_blanco)
-    """if esp_blanco == None:
-        blanco = Todo(text="")
-        db.session.add(blanco)
-        db.session.commit()"""
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
@@ -153,8 +166,7 @@ def add():
     print(contenedor)
     print(texto)
     print(string_V)
-    print(redirect(request.url))
-    return redirect(url_for('main'))
+    return redirect(url_for(dou))
     
 
 @app.route('/complete/<id>')
