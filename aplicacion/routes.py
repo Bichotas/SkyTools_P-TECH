@@ -28,7 +28,9 @@ def before_request():
      
 @app.route('/')
 def main():
+    id_user = current_user.get_id()
     incomplete = Activity.query.filter_by().all()
+    activities = Activity.query.filter_by().all()
     form = ActividadesInput()
     return render_template('blank.html', incomplete=incomplete, form=form)
 
@@ -38,12 +40,6 @@ def register():
         return redirect(url_for('main'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        id_user = current_user.get_id()
-        esp_blanco = db.session.query(Activity).filter(Activity.id == id_user).first()
-        if esp_blanco == None:
-            blanco = Activity(text="")
-            db.session.add(blanco)
-            db.session.commit()
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
@@ -140,28 +136,17 @@ def index():
     form = ActividadesInput()
     return render_template('index.html', incomplete=incomplete, form=form)
 
-contenedor = []
-string_V = ""
 @app.route('/add', methods=['POST'])
 def add():
     follana = g.lista_dou 
     #Parte con formulario
     form = ActividadesInput()
-    usuario_actual = current_user.username
-    id_user = current_user.get_id()
-    esp_blanco = db.session.query(Activity).filter(Activity.id == id_user).first()
-    print(esp_blanco)
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
-            texto = form.text.data
-            contenedor.append(texto)
-            string_V = " - ".join(contenedor)
-            barra = db.session.query(Activity).filter(Activity.id == id_user).update(
-                {
-                    Activity.text: string_V
-                }
-            )
+            a_Z = form.text.data
+            owo = Activity(users_id=id_user, text=a_Z)
+            db.session.add(owo)
             db.session.commit()
     return redirect(url_for(follana[0]))
     
