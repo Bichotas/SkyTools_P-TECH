@@ -191,10 +191,3 @@ def incomplete(id):
     db.session.commit()
 
     return redirect(url_for('index'), form=form)
-
-@app.route('/clear')
-def clear():
-    form = ActividadesInput()
-    db.session.query(Activity).delete()
-    db.session.commit()
-    return redirect(url_for('index'), form=form)    
