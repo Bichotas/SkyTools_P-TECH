@@ -29,10 +29,9 @@ def before_request():
 @app.route('/')
 def main():
     id_user = current_user.get_id()
-    incomplete = Activity.query.filter_by().all()
-    activities = Activity.query.filter_by().all()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
-    return render_template('blank.html', incomplete=incomplete, form=form)
+    return render_template('blank.html', incomplete=activities, form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
