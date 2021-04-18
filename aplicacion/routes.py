@@ -64,15 +64,18 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/about')
-def about():
-    incomplete = Activity.query.filter_by().all()
+def about():    
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
-    return render_template('about.html', incomplete=incomplete, form=form)
+    return render_template('about.html', incomplete=activities, form=form)
 
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    return render_template('profile.html', incomplete=activities)
 
 @app.route('/logout')
 def logout():
@@ -93,11 +96,12 @@ def save_picture(form_picture):
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    incomplete = Activity.query.filter_by().all()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
     a = UpdatingAccountForm()
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
-    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=incomplete)
+    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=activities)
 
 
 # Ruta para actualizar datos 
@@ -124,16 +128,18 @@ def update():
 @app.route('/chatbot')
 def chatbot():
     form = ActividadesInput()
-    incomplete = Activity.query.filter_by().all()
-    return render_template('chatbot.html', form=form, incomplete=incomplete)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    return render_template('chatbot.html', form=form, incomplete=activities)
 
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
-    incomplete = Activity.query.filter_by().all()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     #Parte con fumalrio wtf
     form = ActividadesInput()
-    return render_template('index.html', incomplete=incomplete, form=form)
+    return render_template('index.html', incomplete=activities, form=form)
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -152,26 +158,39 @@ def add():
 
 @app.route('/complete/<id>')
 def complete(id):
+    follana = g.lista_dou 
 
     activity = Activity.query.filter_by(id=int(id)).first()
     #Parte con el formulario
     form = ActividadesInput()
     activity.complete = True
     db.session.commit()
-    return redirect(url_for('index'), form=form)
+    #return redirect(url_for('index'), form=form)
+    return redirect(url_for(follana[0]))
+
 
 @app.route('/delete/<id>')
 def delete(id):
     form = ActividadesInput()
     db.session.query(Activity).filter(Activity.id==id).delete()
     db.session.commit()
+    follana = g.lista_dou 
 
-    return redirect(url_for('index'), form=form)
+    #return redirect(url_for('index'), form=form)
+    return redirect(url_for(follana[0]))
+
 
 @app.route('/incomplete/<id>')
 def incomplete(id):
     activity = Activity.query.filter_by(id=int(id)).first()
     form = ActividadesInput()
     db.session.commit()
+    follana = g.lista_dou 
+    return redirect(url_for(follana[0]))
+    #return redirect(url_for('index'), form=form)
 
-    return redirect(url_for('index'), form=form)
+@app.route('/clear')
+def clear():
+    follana = g.lista_dou 
+    return redirect(url_for(follana[0]))
+    
