@@ -1,8 +1,13 @@
 import secrets
 import os
 
+<<<<<<< HEAD
+from flask import render_template, url_for, flash, redirect, request, g
+from aplicacion.models import User, Activity
+=======
 from flask import render_template, url_for, flash, redirect, request
 from aplicacion.models import User, Todo
+>>>>>>> main
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -10,9 +15,13 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route('/')
 def main():
     id_user = current_user.get_id()
+<<<<<<< HEAD
+    activities = Activity.query.filter_by(users_id=id_user).all()
+=======
     incomplete = Todo.query.filter(Todo.id == id_user).all()
+>>>>>>> main
     form = ActividadesInput()
-    return render_template('blank.html', incomplete=incomplete, form=form)
+    return render_template('blank.html', incomplete=activities, form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -21,12 +30,6 @@ def register():
         return redirect(url_for('main'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        id_user = current_user.get_id()
-        esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
-        if esp_blanco == None:
-            blanco = Todo(text="")
-            db.session.add(blanco)
-            db.session.commit()
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
@@ -52,15 +55,18 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/about')
-def about():
-    incomplete = Todo.query.filter_by().all()
+def about():    
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
-    return render_template('about.html', incomplete=incomplete, form=form)
+    return render_template('about.html', incomplete=activities, form=form)
 
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    return render_template('profile.html', incomplete=activities)
 
 @app.route('/logout')
 def logout():
@@ -81,11 +87,12 @@ def save_picture(form_picture):
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    incomplete = Todo.query.filter_by().all()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
     a = UpdatingAccountForm()
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
-    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=incomplete)
+    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=activities)
 
 
 # Ruta para actualizar datos 
@@ -112,25 +119,33 @@ def update():
 @app.route('/chatbot')
 def chatbot():
     form = ActividadesInput()
-    incomplete = Todo.query.filter_by().all()
-    return render_template('chatbot.html', form=form, incomplete=incomplete)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    return render_template('chatbot.html', form=form, incomplete=activities)
 
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
-    incomplete = Todo.query.filter_by().all()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     #Parte con fumalrio wtf
     form = ActividadesInput()
+<<<<<<< HEAD
+    return render_template('index.html', incomplete=activities, form=form)
+=======
     return render_template('index.html', incomplete=incomplete, form=form)
     
 contenedor = []
 string_V = ""
+>>>>>>> main
 
 @app.route('/add', methods=['POST'])
 def add():
     #Parte con formulario
     
     form = ActividadesInput()
+<<<<<<< HEAD
+=======
     usuario_actual = current_user.username
     id_user = current_user.get_id()
     esp_blanco = db.session.query(Todo).filter(Todo.id == id_user).first()
@@ -139,50 +154,59 @@ def add():
         blanco = Todo(text="")
         db.session.add(blanco)
         db.session.commit()"""
+>>>>>>> main
     if current_user.is_authenticated:
         if form.validate_on_submit():
             id_user = current_user.get_id()
-            texto = form.text.data
-            contenedor.append(texto)
-            string_V = " - ".join(contenedor)
-            barra = db.session.query(Todo).filter(Todo.id == id_user).update(
-                {
-                    Todo.text: string_V
-                }
-            )
+            a_Z = form.text.data
+            owo = Activity(users_id=id_user, text=a_Z)
+            db.session.add(owo)
             db.session.commit()
     return redirect(url_for('main'))
     
 
 @app.route('/complete/<id>')
 def complete(id):
+    follana = g.lista_dou 
 
-    todo = Todo.query.filter_by(id=int(id)).first()
+    activity = Activity.query.filter_by(id=int(id)).first()
     #Parte con el formulario
     form = ActividadesInput()
-    todo.complete = True
+    activity.complete = True
     db.session.commit()
-    return redirect(url_for('index'), form=form)
+    #return redirect(url_for('index'), form=form)
+    return redirect(url_for(follana[0]))
+
 
 @app.route('/delete/<id>')
 def delete(id):
     form = ActividadesInput()
-    db.session.query(Todo).filter(Todo.id==id).delete()
+    db.session.query(Activity).filter(Activity.id==id).delete()
     db.session.commit()
+    follana = g.lista_dou 
 
-    return redirect(url_for('index'), form=form)
+    #return redirect(url_for('index'), form=form)
+    return redirect(url_for(follana[0]))
+
 
 @app.route('/incomplete/<id>')
 def incomplete(id):
-    todo = Todo.query.filter_by(id=int(id)).first()
+    activity = Activity.query.filter_by(id=int(id)).first()
     form = ActividadesInput()
     db.session.commit()
-
-    return redirect(url_for('index'), form=form)
+    follana = g.lista_dou 
+    return redirect(url_for(follana[0]))
+    #return redirect(url_for('index'), form=form)
 
 @app.route('/clear')
 def clear():
+<<<<<<< HEAD
+    follana = g.lista_dou 
+    return redirect(url_for(follana[0]))
+    
+=======
     form = ActividadesInput()
     db.session.query(Todo).delete()
     db.session.commit()
     return redirect(url_for('index'), form=form)    
+>>>>>>> main
