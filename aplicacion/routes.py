@@ -22,6 +22,7 @@ lista = ["",""]
 @app.before_request
 def before_request():
     new = request.endpoint
+    print(new)
     g.lista_dou = addon(lista, new)
     print(g.lista_dou)
 
