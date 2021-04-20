@@ -154,6 +154,9 @@ def complete(id):
 @app.route('/delete/<id>')
 def delete(id):
     form = ActividadesInput()
+    """id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()"""
+    #db.session.query(Activity).filter(Activity.id==id).delete
     db.session.query(Activity).filter(Activity.id==id).delete()
     db.session.commit()
     follana = g.lista_dou 
