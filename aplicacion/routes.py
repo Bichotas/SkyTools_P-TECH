@@ -7,13 +7,31 @@ from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, A
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
+
+def addon(lista, nuevo):
+    aux = lista[0]
+    if not nuevo == 'add':
+        lista[0] = nuevo
+    lista[1] = aux
+    return lista
+
+
+lista = ["",""]
+
+
+@app.before_request
+def before_request():
+    new = request.endpoint
+    g.lista_dou = addon(lista, new)
+    print(g.lista_dou)
+
+     
 @app.route('/')
 def main():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
     return render_template('blank.html', incomplete=activities, form=form)
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -125,8 +143,8 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add():
+    follana = g.lista_dou 
     #Parte con formulario
-    
     form = ActividadesInput()
     if current_user.is_authenticated:
         if form.validate_on_submit():
@@ -135,7 +153,7 @@ def add():
             owo = Activity(users_id=id_user, text=a_Z)
             db.session.add(owo)
             db.session.commit()
-    return redirect(url_for('main'))
+    return redirect(url_for(follana[0]))
     
 
 @app.route('/complete/<id>')
