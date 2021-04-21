@@ -10,10 +10,13 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 def addon(lista, nuevo):
     aux = lista[0]
-    if not nuevo == 'add':
+    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index':
         lista[0] = nuevo
+
     lista[1] = aux
     return lista
+
+
 
 
 lista = ["",""]
