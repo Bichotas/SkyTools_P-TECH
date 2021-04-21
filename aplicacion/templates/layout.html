@@ -144,6 +144,7 @@
           <div class="unu">
             <div class="header">
                 <div class="clear">
+                  <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de">clear</i></a>
                 </div>
               <div id="date"></div>
               </div>
@@ -151,11 +152,8 @@
                 <ul>
                     {% for todo in incomplete %}
 
-                    <a href="{{ url_for('complete', id=todo.id) }}"><i class="fa fa-circle-thin de"></i></a>
-                    <p class="text">{{ todo.text }}</p>
-                    <a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
-                    <!--
-                    <p style="display: inline;"><a href="{{ url_for('complete', id=todo.id) }}"></a>Mark As Complete</a></p><li style="font-size: 30pt">{{ todo.text }}<a href="{{ url_for('delete', id=todo.id) }}"></a> -Delete</a> </li>-->
+                    <p class="text">{{ todo.text }}</p><a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
+
                     {% endfor %}    
                 </ul>
             </div>
