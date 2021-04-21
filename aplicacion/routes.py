@@ -159,20 +159,6 @@ def add():
             db.session.commit()
     return redirect(url_for(follana[0]))
     
-
-@app.route('/complete/<id>')
-def complete(id):
-    follana = g.lista_dou 
-
-    activity = Activity.query.filter_by(id=int(id)).first()
-    #Parte con el formulario
-    form = ActividadesInput()
-    activity.complete = True
-    db.session.commit()
-    #return redirect(url_for('index'), form=form)
-    return redirect(url_for(follana[0]))
-
-
 @app.route('/delete/<id>')
 def delete(id):
     form = ActividadesInput()
@@ -183,18 +169,11 @@ def delete(id):
     #return redirect(url_for('index'), form=form)
     return redirect(url_for(follana[0]))
 
-
-@app.route('/incomplete/<id>')
-def incomplete(id):
-    activity = Activity.query.filter_by(id=int(id)).first()
-    form = ActividadesInput()
-    db.session.commit()
-    follana = g.lista_dou 
-    return redirect(url_for(follana[0]))
-    #return redirect(url_for('index'), form=form)
-
 @app.route('/clear')
 def clear():
+
+    form = ActividadesInput()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     follana = g.lista_dou 
     return redirect(url_for(follana[0]))
     
