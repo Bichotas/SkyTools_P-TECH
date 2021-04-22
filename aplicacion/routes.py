@@ -184,6 +184,6 @@ def clear():
     ).delete()
 
     db.session.add(clear_activities)
-    db.session.commit()
+    db.session.commit() 
     return redirect(url_for(follana[0]))
     
