@@ -1,3 +1,4 @@
+from re import A
 import secrets
 import os
 
@@ -173,12 +174,6 @@ def delete(id):
 def clear():
 
     form = ActividadesInput()
-
-    #hacer una consulta y que lo que se envie, se borre en la base de datos
-    #db.session.query(Activity).filter(Activity.users_id==curr_User).delete()
-    #activities = Activity.query.filter_by(users_id=id_user).all()
-    id_user = current_user.get_id()
-    cl_ear = Activity.query.filter_by(users_id=id_user).delete()
     follana = g.lista_dou 
     return redirect(url_for(follana[0]))
     
