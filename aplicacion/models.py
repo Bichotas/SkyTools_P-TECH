@@ -18,3 +18,25 @@ class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     users_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     text = db.Column(db.String(200))
+
+class Tool(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), unique=False, nullable=False)
+    link = db.Column(db.String(220), unique=False, nullable=False)
+    category = db.Column(db.String(30), unique=False, nullable=False)
+    image_tool = db.Column(db.String(20), unique=False, nullable=True)
+
+    #Para hacer relacion en la tabla intermedia
+
+    tool = db.relationship('Tool', backref='tool')
+
+
+""" Tabla Intermedia para la funcion de agregar a favoritos la herramienta """
+
+# Para mostrar todo y que hay una buena representación, se necestitará usar un Join, para sacar la informacion de dos tablas o más que es para lo que sirve
+class User_Tool(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    users_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    tool_id = db.Column(db.Integer, db.ForeignKey('tool.id'))
