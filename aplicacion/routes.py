@@ -177,13 +177,5 @@ def clear():
     form = ActividadesInput()
     follana = g.lista_dou
 
-    id_user = current_user.get_id()
-
-    clear_activities = session.query(Activity.id, Activity.text, Activity.users_id).filter(
-        Activity.users_id == id_user
-    ).delete()
-
-    db.session.add(clear_activities)
-    db.session.commit() 
     return redirect(url_for(follana[0]))
     
