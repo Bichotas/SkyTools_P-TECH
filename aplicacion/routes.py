@@ -3,6 +3,7 @@ import secrets
 import os
 
 from flask import render_template, url_for, flash, redirect, request, g
+from flask.globals import session
 from aplicacion.models import User, Activity
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
@@ -174,6 +175,12 @@ def delete(id):
 def clear():
 
     form = ActividadesInput()
-    follana = g.lista_dou 
+    follana = g.lista_dou
+
+    id_user = current_user.get_id()
+
+    clear_activities = session.query(Activity.id, Activity.text, Activity.users_id).filter(
+        Activity.users_id == id_user
+    ).delete()
     return redirect(url_for(follana[0]))
     
