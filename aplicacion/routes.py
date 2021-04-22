@@ -176,6 +176,5 @@ def clear():
 
     form = ActividadesInput()
     follana = g.lista_dou
-
     return redirect(url_for(follana[0]))
     
