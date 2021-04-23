@@ -26,7 +26,7 @@
     -->
     <style>
        .navbar{
-        background-color: grey !important;
+        background-color: transparent !important;
       }
       .owo{
         position: absolute;
@@ -101,13 +101,13 @@
     </style>
     
 </head>
-<body>
+<body style="background-color: black;">
 
   <!-- Barra de navegación-->
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <div class="container">
-        <a class="navbar-brand mr-4" href="{{ url_for('main') }}">Flask Blog</a>
+        <a href="/"><img class="header-img" src="{{ url_for('static', filename='img/Logoskytools1.svg') }}"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -115,8 +115,6 @@
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="{{ url_for('main') }}">Home</a>
             <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
-            <a class="nav-item nav-link" href="{{ url_for('chatbot') }}">ChatBot</a>
-
           </div>
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
