@@ -180,5 +180,6 @@ def clear():
     
 @app.route('/tools')
 def tools():
+    isa = ["a", "dos", "tres"]
     form = ActividadesInput()
-    return render_template('tools.html', form=form)
+    return render_template('tools.html', form=form, isa=isa)
