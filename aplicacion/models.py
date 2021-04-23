@@ -39,4 +39,4 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(20), unique=True, nullable=False)
-    image_category = db.Column(db.String(30), unique=False, nullable=True)
+    #image_category = db.Column(db.String(30), unique=False, nullable=True)
