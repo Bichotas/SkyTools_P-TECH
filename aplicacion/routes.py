@@ -37,7 +37,7 @@ def main():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
-    return render_template('blank.html', incomplete=activities, form=form)
+    return render_template('home.html', incomplete=activities, form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
