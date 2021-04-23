@@ -4,7 +4,7 @@ import os
 
 from flask import render_template, url_for, flash, redirect, request, g
 from flask.globals import session
-from aplicacion.models import User, Activity
+from aplicacion.models import User, Activity, UserTool, Category
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -180,6 +180,7 @@ def clear():
     
 @app.route('/tools')
 def tools():
+    
     isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
     return render_template('tools.html',form=form, isa=isa)
