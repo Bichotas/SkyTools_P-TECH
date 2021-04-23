@@ -34,3 +34,9 @@ class UserTool(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     users_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     tool_id = db.Column(db.Integer, db.ForeignKey('tool.id'))
+
+class Category(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    category_name = db.Column(db.String(20), unique=True, nullable=False)
+    image_category = db.Column(db.String(30), unique=False, nullable=True)
