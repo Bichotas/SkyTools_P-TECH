@@ -96,7 +96,6 @@
 
     .separacion{
         margin-top: 100px;
-        margin-bottom: 300px;
     }
 
     .uwu{
@@ -137,7 +136,7 @@
         width: 250px;
         position: relative;
         display: inline-block;
-        margin-top: 6%;
+        margin-top: 2%;
         margin-left: 2%;
         margin-right: 2%;
         margin-bottom: 2%;
@@ -157,11 +156,12 @@
         <div class="container titan">Herramientas</div>
     </div>
 </div>
+<div class="separacion"></div>
 <ul>
     
         <li>
             {% for i in isa %}
-                <div class="cuadrate">{{ i }}</div>
+               <a href="#"><div class="cuadrate">{{ i }} </div></a>
             {% endfor %}
         </li>
     
