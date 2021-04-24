@@ -181,7 +181,7 @@ def clear():
 @app.route('/tools')
 def tools():
     
-    isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
+    #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
-    Category.query.all()
-    return render_template('tools.html',form=form, isa=Category.query.all())
+    myCategory = Category.query.all()
+    return render_template('tools.html',form=form, myCategory=myCategory)
