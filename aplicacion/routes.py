@@ -185,3 +185,8 @@ def tools():
     form = ActividadesInput()
     myCategory = Category.query.all()
     return render_template('tools.html',form=form, myCategory=myCategory)
+
+@app.route('/uno')
+def uno():
+
+    return render_template('blank.html')
