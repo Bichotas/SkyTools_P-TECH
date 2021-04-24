@@ -157,7 +157,7 @@
    * 2. Remove the margin in Firefox and Safari.
    */
   
-  button,
+
   input,
   optgroup,
   select,
@@ -173,7 +173,7 @@
    * 1. Show the overflow in Edge.
    */
   
-  button,
+
   input { /* 1 */
     overflow: visible;
   }
@@ -183,7 +183,7 @@
    * 1. Remove the inheritance of text transform in Firefox.
    */
   
-  button,
+
   select { /* 1 */
     text-transform: none;
   }
@@ -210,22 +210,7 @@
     border-style: none;
     padding: 0;
   }
-  
-  /**
-   * Restore the focus styles unset by the previous rule.
-   */
-  
-  button:-moz-focusring,
-  [type="button"]:-moz-focusring,
-  [type="reset"]:-moz-focusring,
-  [type="submit"]:-moz-focusring {
-    outline: 1px dotted ButtonText;
-  }
-  
-  /**
-   * Correct the padding in Firefox.
-   */
-  
+
   fieldset {
     padding: 0.35em 0.75em 0.625em;
   }
