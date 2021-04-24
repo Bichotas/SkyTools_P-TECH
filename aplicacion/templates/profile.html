@@ -38,7 +38,7 @@
   }
   
   .content-section {
-    background: #ffffff;
+    background: transparent;
     padding: 100px 20px;
     border: none;
     border-radius: 3px;
@@ -155,7 +155,7 @@
         <div class="media">
             <img class="rounded-circle account-img spe" src="{{ image_file }}">
             <div class="media-body ba-nom">
-                <h2 class="account-heading">{{ current_user.username }}</h2>
+                <h2 class="account-heading" style="color: rgb(235, 233, 233);">{{ current_user.username }}</h2>
                 <p class="text-secondary" style="font-size: 28px; margin-left: 2%; margin-top: 2%;">{{ current_user.email }}</p>
                 <div class="container" style="margin-top: 3%; margin-left: 5%;">
                     <a href="{{ url_for('update') }}"><button class="boton-unu">Update profile</button></a>
