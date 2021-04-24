@@ -183,8 +183,10 @@ def tools():
     
     #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
     myCategory = Category.query.all()
-    return render_template('tools.html',form=form, myCategory=myCategory)
+    return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
 @app.route('/uno')
 def uno():
