@@ -183,7 +183,5 @@ def tools():
     
     isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
-    for a in Category.query.all():
-        uwu = a.category_name
-        print(uwu)
-    return render_template('tools.html',form=form, isa=isa)
+    Category.query.all()
+    return render_template('tools.html',form=form, isa=Category.query.all())
