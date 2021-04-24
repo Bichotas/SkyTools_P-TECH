@@ -143,6 +143,15 @@
         border-radius: 20px;
 
     }
+
+    .texto{
+        text-align: center;
+        display: block;
+        font-size: xx-large;
+        font-family: Signika;
+        margin-top: 14%;
+
+    }
 </style>
 
 {% endblock %}
@@ -160,7 +169,10 @@
 <ul>
     
         {% for i in myCategory %}
-            <a href="#"><div class="cuadrate">{{ i.category_name }} </div></a>
+            <a href="#">
+                <div class="cuadrate">
+                    <div class="texto">{{ i.category_name }}</div>
+                </div></a>
         {% endfor %}
     
 </ul>
