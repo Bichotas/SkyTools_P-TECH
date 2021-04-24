@@ -37,7 +37,7 @@ def main():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
-    return render_template('blank.html', incomplete=activities, form=form)
+    return render_template('home.html', incomplete=activities, form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -181,9 +181,7 @@ def clear():
 @app.route('/tools')
 def tools():
     
-    isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
+    #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
-    for a in Category.query.all():
-        uwu = a.category_name
-        print(uwu)
-    return render_template('tools.html',form=form, isa=isa)
+    myCategory = Category.query.all()
+    return render_template('tools.html',form=form, myCategory=myCategory)

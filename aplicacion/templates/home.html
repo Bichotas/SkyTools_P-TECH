@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+
+<title>Home - BichotaS</title>
+
+{% endblock %}
+
+
+{% block links %}
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
+    
+    
+{% endblock %}
+
+
+{% block styles %}
+
+{% endblock %}
+
+{% block body %}
+<main>
+    <section> 
+      
+      <div class="acomodo-titulo">
+        <h1 id="text">Sky Tools</h1>
+      </div>
+
+      <img src="{{ url_for('static', filename='images/stars.png') }}" id="stars">
+      <img src="{{ url_for('static', filename='images/transparente.png') }}" id="moon">
+      <img src="{{ url_for('static', filename='img/Montaña.png') }}" id="mountains_behind">
+      
+      <div class="explore">
+        <a href="#sec" id="btn">Explore</a>
+      </div>
+      
+      <img src="{{ url_for('static', filename='images/transparente.png') }}" id="mountains_front">
+      <div class="content">
+      </section>
+      <div class="sec" id="sec">
+        <h2>About us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. <br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. E</p>
+      </div class="sec">
+      <script type="text/javascript">
+        let moon = document.getElementById('moon');
+        let stars = document.getElementById('stars');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let mountains_front = document.getElementById('mountains_front');
+        let text = document.getElementById('text');
+        let btn = document.getElementById('btn');
+        let header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+          var value = window.scrollY;
+          moon.style.top = -value * -1.05 + 'px';
+          stars.style.left = value * 0.25 + 'px';
+          mountains_behind.style.top =-value * -0.5 + 'px';
+          header.style.top =-value * -0.5 + 'px';
+          mountains_front.style.top =-value * 0 + 'px';
+          text.style.marginTop = value * 1.5 + 'px';
+          btn.style.marginTop = value * 1.5 + 'px';
+          text.style.marginRight = value * 4 + 'px';
+        });
+      </script>
+          
+      {% if current_user.is_authenticated %}
+      <div class="btn-group owo">
+        <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
+          Actividades
+        </button>
+        <ul class="dropdown-menu" style="background-color: transparent; border: none;" role="sing">
+            <div class="container-u">
+              <div class="unu">
+                <div class="header">
+                    <div class="clear">
+                      <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de">clear</i></a>
+                    </div>
+                  <div id="date"></div>
+                  </div>
+                <div class="content">
+                    <ul>
+                        {% for todo in incomplete %}
+
+                        <p class="text">{{ todo.text }}</p><a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
+
+                        {% endfor %}    
+                    </ul>
+                </div>
+                <div class="add-to-do">
+                    <i class="fa fa-plus-circle"></i>
+                    <form action="{{ url_for('add') }}" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div>
+                        <!--<input type="text" name="todoitem" placeholder="Add to">-->
+                            {{ form.text() }}
+                            
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+          </div>
+        </ul>
+      </div>
+      {% endif %}
+
+    <div class="container-a sec">
+      <div class="card">
+        <div class="imgBx">
+          <img src="{{ url_for('static', filename='img/chatbot.jpg') }}">
+        </div>
+        <div class="contentBx">
+          <div class="content">
+            <h3>Chat Bot</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="{{ url_for('static', filename='img/tuerca.jpg') }}">
+        </div>
+        <div class="contentBx">
+          <div class="content">
+            <h3>Tools</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="{{ url_for('static', filename='img/bee.jpg') }}">
+        </div>
+        <div class="contentBx">
+          <div class="content">
+            <h3>IBM Services</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </main>
+
+  <footer>
+    <div class="acomodo-footer">
+      <div class="container-footer">
+        <div class="sec-footer aboutus">
+          <h2>About Us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+          <ul class="sci">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+          </ul>
+        </div>
+        <div class="sec-footer quicklinks">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="{{ url_for('main') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="">Mission</a></li>
+            <li><a href="{{ url_for('chatbot') }}">Chatbot</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="sec-footer contact">
+          <h2>Contact Us</h2>
+          <ul class="info">
+            <li>
+              <span><i class="fa fa-map-marker"></i></span>
+              <p>Guadalajara<br>
+                Jalisco<br>Mexico</p>
+            </li>
+
+            <li>
+              <span><i class="fa fa-envelope"></i></span>
+              <p><a href="mailto:knowmore@email.com">skytools@email.com</a></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+	</footer>
+	<div class="copyrightText">
+		<p>Copyright © 2021 Sky Tools All Rights Reserved.</p>
+	</div> 
+      
+{% endblock %}

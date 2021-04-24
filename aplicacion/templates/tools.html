@@ -143,6 +143,15 @@
         border-radius: 20px;
 
     }
+
+    .texto{
+        text-align: center;
+        display: block;
+        font-size: xx-large;
+        font-family: Signika;
+        margin-top: 14%;
+
+    }
 </style>
 
 {% endblock %}
@@ -159,8 +168,11 @@
 <div class="separacion"></div>
 <ul>
     
-        {% for i in isa %}
-            <a href="#"><div class="cuadrate">{{ uwu }} </div></a>
+        {% for i in myCategory %}
+            <a href="#">
+                <div class="cuadrate">
+                    <div class="texto">{{ i.category_name }}</div>
+                </div></a>
         {% endfor %}
     
 </ul>
