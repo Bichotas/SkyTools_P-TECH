@@ -71,6 +71,48 @@
           text.style.marginRight = value * 4 + 'px';
         });
       </script>
+          
+    {% if current_user.is_authenticated %}
+    <div class="btn-group owo">
+      <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
+        Actividades
+      </button>
+      <ul class="dropdown-menu" style="background-color: transparent; border: none;" role="sing">
+          <div class="container-u">
+            <div class="unu">
+              <div class="header">
+                  <div class="clear">
+                    <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de">clear</i></a>
+                  </div>
+                <div id="date"></div>
+                </div>
+              <div class="content">
+                  <ul>
+                      {% for todo in incomplete %}
+
+                      <p class="text">{{ todo.text }}</p><a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
+
+                      {% endfor %}    
+                  </ul>
+              </div>
+              <div class="add-to-do">
+                  <i class="fa fa-plus-circle"></i>
+                  <form action="{{ url_for('add') }}" method="POST">
+                      {{ form.hidden_tag() }}
+                      <div>
+                      <!--<input type="text" name="todoitem" placeholder="Add to">-->
+                          {{ form.text() }}
+                          
+                      </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+          <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        </div>
+      </ul>
+    </div>
+    {% endif %}
 
     <div class="container-a sec">
       <div class="card">
