@@ -167,13 +167,17 @@
 </div>
 <div class="separacion"></div>
 <ul>
-    
-        {% for i in myCategory %}
-            <a href="#">
-                <div class="cuadrate">
-                    <div class="texto">{{ i.category_name }}</div>
-                </div></a>
-        {% endfor %}
+
+    {% for i in myCategory %}
+        <script>
+            var uwuopen = i.url_for_category
+        </script>
+        <a href="">
+            <div class="cuadrate">
+                 <div class="texto">{{ i.category_name }}</div>
+            </div>
+        </a>
+    {% endfor %}
     
 </ul>
 
