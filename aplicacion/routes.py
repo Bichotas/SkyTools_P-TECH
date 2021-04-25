@@ -192,3 +192,13 @@ def tools():
 def uno():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
+
+@app.route('/dos')
+def dos():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/tres')
+def tres():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
