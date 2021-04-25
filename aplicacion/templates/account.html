@@ -6,21 +6,20 @@
 <title>Account - BichotaS</title>
 
 {% endblock %}
-
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
+{% endblock %}
 
 {% block styles %}
 <style>
-
-    *{
+    body{
+        background: #c4c4c4;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Signika;
-    }
-
-    body{
-        background: #c4c4c4;
-        
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
     }
 
     .contenedor{
