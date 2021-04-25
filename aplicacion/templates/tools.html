@@ -174,31 +174,14 @@
 <div class="separacion"></div>
 <ul>
 
-    <!-- {% for i in myCategory %}
-        <a href="">
+    {% for i in myCategory %}
+        <a href="{{ url_for(i.url_for_category) }}">
             <div class="cuadrate">
                  <div class="texto">{{ i.category_name }}</div>
             </div>
         </a>
     {% endfor %}
-    
-     -->
 
-     <a href="{{ url_for('uno') }}">
-        <div class="cuadrate">
-             <div class="texto">Uno</div>
-        </div>
-    </a>
-    <a href="">
-        <div class="cuadrate">
-             <div class="texto">Dos</div>
-        </div>
-    </a>
-    <a href="">
-        <div class="cuadrate">
-             <div class="texto">Tres</div>
-        </div>
-    </a>
 </ul>
 
 {% endblock %}
