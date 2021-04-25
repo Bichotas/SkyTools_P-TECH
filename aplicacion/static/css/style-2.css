@@ -38,7 +38,15 @@ section
 margin: auto;
 
 }
-
+.header{
+  width: 380px;
+  height:200px;
+  background-image: url('../img/bg2.jpg');
+  background-size: 100% 200%;
+  background-repeat: no-repeat;
+  border-radius: 15px 15px 0 0;
+  position: relative;
+}
 
 header
 {
