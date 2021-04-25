@@ -190,5 +190,5 @@ def tools():
 
 @app.route('/uno')
 def uno():
-
-    return render_template('blank.html')
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
