@@ -118,9 +118,10 @@ section img#mountains_front
 
 
 .explore{
-width: 100%;
-display: flex;
-justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-right: 40px;
 }
 
 #btn
@@ -135,6 +136,7 @@ justify-content: center;
   font-size: 1.5em;
   z-index: 9;
 }
+
 .sec
 {
   text-align: center;
