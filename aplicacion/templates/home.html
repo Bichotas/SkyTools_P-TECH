@@ -12,7 +12,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
 {% endblock %}
 
@@ -26,15 +27,16 @@
     <section> 
       
       <div class="acomodo-titulo">
-        <h1 id="text">Sky Tools</h1>
+        <h1 style="color: rgba(255, 255, 255, 0.925);" id="text">Sky Tools</h1>
       </div>
 
       <img src="{{ url_for('static', filename='images/stars.png') }}" id="stars">
       <img src="{{ url_for('static', filename='images/transparente.png') }}" id="moon">
       <img src="{{ url_for('static', filename='img/Montaña.png') }}" id="mountains_behind">
-      
-      <div class="explore">
-        <a href="#sec" id="btn">Explore</a>
+      <div class="container">
+        <div class="explore">
+          <a href="{{ url_for('chatbot') }}" id="btn">Chatbot</a>
+        </div>
       </div>
       
       <img src="{{ url_for('static', filename='images/transparente.png') }}" id="mountains_front">
