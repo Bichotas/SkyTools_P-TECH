@@ -85,17 +85,27 @@
               <div class="unu">
                 <div class="header">
                     <div class="clear">
-                      <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de"></i></a>
+                      <a href="{{ url_for('clear') }}"><i class="fa fa-refresh de"></i></a>
                     </div>
                   <div id="date"></div>
                   </div>
                 <div class="content">
-                    <ul>
+                    <!--<ul>
                         {% for todo in incomplete %}
 
                         <p class="text">{{ todo.text }}</p><a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
 
                         {% endfor %}    
+                    </ul>-->
+
+                    <ul id="list">
+                      {% for todo in incomplete %}
+                        <li class="item">
+                          <i class="fa fa-circle-thin co"></i>
+                          <p class="text">{{ todo.text }}</p>
+                          <i class="fa fa-trash-o de"></i>
+                        </li>
+                      {% endfor %}  
                     </ul>
                 </div>
                 <div class="add-to-do">
