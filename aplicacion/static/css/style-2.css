@@ -127,7 +127,7 @@ section img#mountains_front
 
 .explore{
   width: 100%;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   margin-right: 40px;
 }
