@@ -84,7 +84,8 @@ def about():
 def profile():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    return render_template('profile.html', incomplete=activities)
+    myCategory = Category.query.all()
+    return render_template('profile.html', incomplete=activities, myCategory=myCategory)
 
 @app.route('/logout')
 def logout():
