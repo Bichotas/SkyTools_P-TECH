@@ -8,7 +8,10 @@ from aplicacion.models import User, Activity, UserTool, Category
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+from datetime import datetime
 
+
+fecha = datetime.now()
 
 def addon(lista, nuevo):
     aux = lista[0]
