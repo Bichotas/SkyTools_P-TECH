@@ -177,8 +177,10 @@ def delete(id):
 
 @app.route('/clear')
 def clear():
-
+    id_user = current_user.get_id()
     form = ActividadesInput()
+    db.session.query(Activity).filter(Activity.users_id==id_user).delete()
+    db.session.commit()
     follana = g.lista_dou
     return redirect(url_for(follana[0]))
     
