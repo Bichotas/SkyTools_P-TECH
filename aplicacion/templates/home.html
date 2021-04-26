@@ -103,7 +103,7 @@
                         <li class="item">
                           <i class="fa fa-circle-thin co"></i>
                           <p class="text">{{ todo.text }}</p>
-                          <i class="fa fa-trash-o de"></i>
+                          <a href="{{ url_for('delete', id=todo.id) }}"> <i class="fa fa-trash-o de"></i></a>
                         </li>
                       {% endfor %}  
                     </ul>
