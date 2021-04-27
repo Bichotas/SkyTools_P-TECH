@@ -194,18 +194,36 @@ def tools():
     myCategory = Category.query.all()
     return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
-@app.route('/uno')
-def uno():
+
+""" Rutas para las categorías en la tabla "Category" """
+
+@app.route('/diagramas')
+def diagramas():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
-@app.route('/dos')
-def dos():
+@app.route('/mapas_mentales')
+def mapas_mentales():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
-@app.route('/tres')
-def tres():
+@app.route('/PDF_tools')
+def pdf_tools():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/presentaciones')
+def presentaciones():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/esquemas')
+def esquemas():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/editor_imagenes')
+def editor_imagenes():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
@@ -214,7 +232,3 @@ def extensiones():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 # Países que asistieron a la cumbre de estocolmo (1972)
-""" Afganistán, Argelia, Argentina, Australia, Austria, Bahrein, Bangladesh, Bélgica, Bolivia, Botswana, Brasil, Burundi, Camerún, Canadá, Ceilán, Colombia, Congo Costa de Marfil, Costa Rica, Chad, ChileChina, Chipre, Dahomey, Dinamarca Ecuador, Egipto, El Salvador, Emiratos Arabes Unidos, España, Estados Unidos de América, Etiopía, Fiji, Filipinas, Finlandia, Francia, Gabón, Ghana, Grecia, Guatemala, Guinea, Guyana, Haití, Honduras, India, Indonesia, Irak, Irán, Irlanda, Islandia, Israel, Italia, Jamaica,
-Japón, Jordania, Kenia, Kuwait, Lesotho, Líbano, Liberia, Liechtenstein, Luxemburgo, Madagascar, Malasia, Malawi, Malta, Marruecos, Mauricio, Mauritania, México, Monaco, Nepal, Nicaragua, Niger, Nigeria, Noruega, Nueva Zelandia, Países Bajos,
-Pakistán, Panamá, Perú, Portugal, Reino Unido de Gran Bretaña e Irlanda del Norte, República Arabe Libia, República Arabe Siria, República Centroafricana, República de Corea, República Dominicana, República Federal de Alemania, República Unida de Tanzania, República de Viet-Nam, Rumania, San Marino, Santa Sede, Senegal, Singapur, Sudáfrica, Sudán, Suecia, Suiza, Swazilandia, Tailandia, Togo,
-Trinidad y Tabago, Túnez, Turquía, Uganda, Uruguay, Venezuela, Yemen, Yugoslavia, Zaire y Zambia """
