@@ -232,3 +232,8 @@ def extensiones():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
+@app.route('/board_online')
+def board_online():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
