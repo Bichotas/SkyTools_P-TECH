@@ -15,7 +15,7 @@ fecha = datetime.now()
 
 def addon(lista, nuevo):
     aux = lista[0]
-    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools':
+    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools' or nuevo == 'learn':
         lista[0] = nuevo
 
     lista[1] = aux
@@ -202,7 +202,7 @@ def learn():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myCategory = Category.query.all()
-    return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
+    return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
 
 
 """ Rutas para las categorías en la tabla "Category" """
