@@ -209,6 +209,10 @@ def tres():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
+@app.route('/extensiones')
+def extensiones():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
 # Países que asistieron a la cumbre de estocolmo (1972)
 """ Afganistán, Argelia, Argentina, Australia, Austria, Bahrein, Bangladesh, Bélgica, Bolivia, Botswana, Brasil, Burundi, Camerún, Canadá, Ceilán, Colombia, Congo Costa de Marfil, Costa Rica, Chad, ChileChina, Chipre, Dahomey, Dinamarca Ecuador, Egipto, El Salvador, Emiratos Arabes Unidos, España, Estados Unidos de América, Etiopía, Fiji, Filipinas, Finlandia, Francia, Gabón, Ghana, Grecia, Guatemala, Guinea, Guyana, Haití, Honduras, India, Indonesia, Irak, Irán, Irlanda, Islandia, Israel, Italia, Jamaica,
 Japón, Jordania, Kenia, Kuwait, Lesotho, Líbano, Liberia, Liechtenstein, Luxemburgo, Madagascar, Malasia, Malawi, Malta, Marruecos, Mauricio, Mauritania, México, Monaco, Nepal, Nicaragua, Niger, Nigeria, Noruega, Nueva Zelandia, Países Bajos,
