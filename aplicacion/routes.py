@@ -231,4 +231,4 @@ def editor_imagenes():
 def extensiones():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
-# Países que asistieron a la cumbre de estocolmo (1972)
+
