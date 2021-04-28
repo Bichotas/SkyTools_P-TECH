@@ -191,7 +191,8 @@ def tools():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myCategory = Category.query.all()
+    #myCategory = Category.query.all()
+    myCategory = Category.query.filter_by(type_category_id=1).all()
     return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
 @app.route('/learn')
@@ -201,7 +202,7 @@ def learn():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myCategory = Category.query.all()
+    myCategory = Category.query.filter_by(type_category_id=2).all()
     return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
 
 
