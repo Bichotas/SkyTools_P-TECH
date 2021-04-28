@@ -206,7 +206,7 @@ def learn():
     return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
 
 
-""" Rutas para las categorías en la tabla "Category" """
+""" Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
 def diagramas():
@@ -254,3 +254,10 @@ def esquemas():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
+
+""" Rutas para las categorías Aprendizje en la tabla "Category" """
+
+@app.route('/paginas_web')
+def paginas_web():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
