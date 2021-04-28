@@ -228,8 +228,8 @@ def presentaciones():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
-@app.route('/esquemas')
-def esquemas():
+@app.route('/line_time')
+def line_time():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
@@ -245,6 +245,12 @@ def extensiones():
 
 @app.route('/board_online')
 def board_online():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+
+@app.route('/esquemas')
+def esquemas():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
