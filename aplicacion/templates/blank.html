@@ -10,7 +10,7 @@
 
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-3.css') }}">
 {% endblock %}
 
 
@@ -19,3 +19,9 @@
 
 
 {% endblock %} 
+
+{% block body %}
+<div class="container" style="position: relative !important;">
+    <img src="{{ url_for('static', filename='profile_pics/hinata.jpg') }}" alt="a" style="position: absolute; margin-bottom: 50%; left: 40%;  margin: -25px 0 0 -25px;">
+</div>
+{% endblock %}

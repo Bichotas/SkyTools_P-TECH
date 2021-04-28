@@ -7,11 +7,7 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
-body
-{
-  background: linear-gradient(#001f32,#010029);
-  width: 100%;
-}
+
 section
 {
   position: relative;
@@ -127,7 +123,7 @@ section img#mountains_front
 
 .explore{
   width: 100%;
-  display: inline-block;
+  display: flex;
   justify-content: center;
   margin-right: 40px;
 }

@@ -8,11 +8,14 @@ from aplicacion.models import User, Activity, UserTool, Category
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+from datetime import datetime
 
+
+fecha = datetime.now()
 
 def addon(lista, nuevo):
     aux = lista[0]
-    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools':
+    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools' or nuevo == 'learn':
         lista[0] = nuevo
 
     lista[1] = aux
@@ -81,7 +84,8 @@ def about():
 def profile():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    return render_template('profile.html', incomplete=activities)
+    myCategory = Category.query.all()
+    return render_template('profile.html', incomplete=activities, myCategory=myCategory)
 
 @app.route('/logout')
 def logout():
@@ -173,8 +177,10 @@ def delete(id):
 
 @app.route('/clear')
 def clear():
-
+    id_user = current_user.get_id()
     form = ActividadesInput()
+    db.session.query(Activity).filter(Activity.users_id==id_user).delete()
+    db.session.commit()
     follana = g.lista_dou
     return redirect(url_for(follana[0]))
     
@@ -185,20 +191,60 @@ def tools():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myCategory = Category.query.all()
+    #myCategory = Category.query.all()
+    myCategory = Category.query.filter_by(type_category_id=1).all()
     return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
-@app.route('/uno')
-def uno():
+@app.route('/learn')
+def learn():
+    
+    #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
+    form = ActividadesInput()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myCategory = Category.query.filter_by(type_category_id=2).all()
+    return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
+
+
+""" Rutas para las categorías en la tabla "Category" """
+
+@app.route('/diagramas')
+def diagramas():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
-@app.route('/dos')
-def dos():
+@app.route('/mapas_mentales')
+def mapas_mentales():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
 
-@app.route('/tres')
-def tres():
+@app.route('/PDF_tools')
+def pdf_tools():
     form = ActividadesInput()
     return render_template('blank.html', form=form)
+
+@app.route('/presentaciones')
+def presentaciones():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/esquemas')
+def esquemas():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/editor_imagenes')
+def editor_imagenes():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/extensiones')
+def extensiones():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+
+@app.route('/board_online')
+def board_online():
+    form = ActividadesInput()
+    return render_template('blank.html', form=form)
+

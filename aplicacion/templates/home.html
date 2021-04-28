@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/js" href="{{ url_for('static', filename='js/app.js') }}">
     
 {% endblock %}
 
@@ -33,14 +33,9 @@
       <img src="{{ url_for('static', filename='images/stars.png') }}" id="stars">
       <img src="{{ url_for('static', filename='images/transparente.png') }}" id="moon">
       <img src="{{ url_for('static', filename='img/Montaña.png') }}" id="mountains_behind">
-      <div class="container">
-        <div class="explore">
-          <a href="{{ url_for('tools') }}" id="btn">Herramientas</a>
-        </div>
-      </div>
-      
+
       <img src="{{ url_for('static', filename='images/transparente.png') }}" id="mountains_front">
-      <div class="content">
+      <!-- <div class="content"></div> -->
       </section>
       <div class="sec" id="sec">
         <h2>About us</h2>
@@ -85,17 +80,27 @@
               <div class="unu">
                 <div class="header">
                     <div class="clear">
-                      <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de">clear</i></a>
+                      <a href="{{ url_for('clear') }}"><i class="fa fa-refresh de"></i></a>
                     </div>
                   <div id="date"></div>
                   </div>
                 <div class="content">
-                    <ul>
+                    <!--<ul>
                         {% for todo in incomplete %}
 
                         <p class="text">{{ todo.text }}</p><a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de">Tirando facha</i></a>
 
                         {% endfor %}    
+                    </ul>-->
+
+                    <ul id="list">
+                      {% for todo in incomplete %}
+                        <li class="item">
+                          <i class="fa fa-circle-thin co"></i>
+                          <p class="text">{{ todo.text }}</p>
+                          <a href="{{ url_for('delete', id=todo.id) }}"> <i class="fa fa-trash-o de"></i></a>
+                        </li>
+                      {% endfor %}  
                     </ul>
                 </div>
                 <div class="add-to-do">

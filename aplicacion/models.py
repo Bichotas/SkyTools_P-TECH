@@ -40,4 +40,13 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(20), unique=True, nullable=False)
     image_category = db.Column(db.String(30), unique=False, nullable=True)
+    type_category_id = db.Column(db.Integer, db.ForeignKey('type.id'))
     url_for_category = db.Column(db.String(30), unique=True, nullable=True)
+
+class Type(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name_type = db.Column(db.String(30), unique=True, nullable=False)
+    type_ca = db.relationship('Category', backref='type_ca')
+
+

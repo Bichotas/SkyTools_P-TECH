@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -14,7 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    
 
     {% block links %}
       
@@ -120,6 +117,7 @@
             <a class="nav-item nav-link" href="{{ url_for('main') }}">Home</a>
             <a class="nav-item nav-link" href="{{ url_for('chatbot') }}">Chatbot</a>
             <a class="nav-item nav-link" href="{{ url_for('tools') }}">Herramientas</a>
+            <a class="nav-item nav-link" href="{{ url_for('learn') }}">Aprendizaje</a>
           </div>
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
@@ -136,7 +134,7 @@
     </nav>
   </header>
 
-      
+
 {% if current_user.is_authenticated %}
   <div class="btn-group owo">
     <button type="button" class="btn brn-defaul dropdown-toggle rotates" data-toggle="dropdown"> 
@@ -147,17 +145,26 @@
           <div class="unu">
             <div class="header">
                 <div class="clear">
-                  <a href="{{ url_for('clear') }}"><i class="fa fa-trash-o de">clear</i></a>
+                  <a href="{{ url_for('clear') }}"><i class="fa fa-refresh de"></i></a>
                 </div>
               <div id="date"></div>
               </div>
             <div class="content">
-                <ul>
+                <!-- <ul>
                     {% for todo in incomplete %}
 
                     <p class="text">{{ todo.text }} <a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de"></i></a></p>
 
                     {% endfor %}    
+                </ul> -->
+                <ul id="list">
+                  {% for todo in incomplete %}
+                    <li class="item">
+                      <i class="fa fa-circle-thin co"></i>
+                      <p class="text">{{ todo.text }}</p>
+                      <a href="{{ url_for('delete', id=todo.id) }}"><i class="fa fa-trash-o de"></i></a>
+                    </li>
+                  {% endfor %}  
                 </ul>
             </div>
             <div class="add-to-do">
