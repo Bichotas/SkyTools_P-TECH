@@ -24,7 +24,7 @@ class Tool(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique=False, nullable=False)
     link = db.Column(db.String(220), unique=False, nullable=False)
-    category = db.Column(db.String(30), unique=False, nullable=False)
+    category = db.Column(db.Integer, db.ForeignKey('category.id'))
     image_tool = db.Column(db.String(20), unique=False, nullable=True)
     tool = db.relationship('UserTool', backref='user_tool')
 
@@ -42,6 +42,7 @@ class Category(db.Model):
     image_category = db.Column(db.String(30), unique=False, nullable=True)
     type_category_id = db.Column(db.Integer, db.ForeignKey('type.id'))
     url_for_category = db.Column(db.String(30), unique=True, nullable=True)
+    category_rel = db.relationship('Tool', backref='category')
 
 class Type(db.Model):
 
