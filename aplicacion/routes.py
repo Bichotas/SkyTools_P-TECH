@@ -213,54 +213,79 @@ def diagramas():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=7).all()
-    return render_template('diagramas.html', form=form, incomplete=activities, myTools=myTools)
+    myTools = Tool.query.filter_by(category=1).all()
+    return render_template('categorias/Herramientas/diagramas.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/mapas_mentales')
 def mapas_mentales():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=2).all()
+    return render_template('categorias/Herramientas/mapas_mentales.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/PDF_tools')
 def pdf_tools():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=3).all()
+    return render_template('categorias/pdf_tools.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/presentaciones')
 def presentaciones():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=4).all()
+    return render_template('categorias/Herramientas/presentaciones.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/line_time')
 def line_time():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=9).all()
+    return render_template('categorias/Herramientas/lineas_de_tiempo.html', form=form, incomplete=activities, myTools=myTools)
 
-@app.route('/editor_imagenes')
-def editor_imagenes():
+@app.route('/editores_imagenes')
+def editores_imagenes():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
-
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=6).all()
+    return render_template('categorias/Herramientas/editores_imagenes.html', form=form, incomplete=activities, myTools=myTools)
 @app.route('/extensiones')
 def extensiones():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=7).all()
+    return render_template('categorias/Herramientas/extensiones.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/board_online')
 def board_online():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=8).all()
+    return render_template('categorias/Herramientas/online_boards.html', form=form, incomplete=activities, myTools=myTools)
 
 
 @app.route('/esquemas')
 def esquemas():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
-
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=10).all()
+    return render_template('categorias/Herramientas/esquemas.html', form=form, incomplete=activities, myTools=myTools)
 
 """ Rutas para las categorías Aprendizje en la tabla "Category" """
 
 @app.route('/paginas_web')
 def paginas_web():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=2).all()
+    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
