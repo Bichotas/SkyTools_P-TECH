@@ -158,6 +158,20 @@
         border-radius: 20px;
 
     }
+
+    .dropdown-menu::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: 41.5%;
+        border-top: 20px solid white;
+        border-right: 20px solid transparent;
+        border-left: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        -webkit-transform: rotate(180deg);
+
+    }
 </style>
 
 {% endblock %}
@@ -182,10 +196,10 @@
                 <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{ i.name }}
                 </button>
-                <div class="dropdown-menu" style="width: 250px; margin-top: 5px;">
+                <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                   <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                  <button class="dropdown-item" type="button" style="text-align: center;">Action</button>
-                  <button class="dropdown-item" type="button" style="text-align: center;">Action</button>
+                  <button class="dropdown-item" type="button" style="text-align: center;">Checar</button>
+                  <button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button>
                 </div>
             </div>
     {% endfor %}
