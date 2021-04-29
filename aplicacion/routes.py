@@ -111,7 +111,7 @@ def account():
     form = ActividadesInput()
     a = UpdatingAccountForm()
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
-    return render_template('profile.html', image_file=image_file, form=form, a=a, incomplete=activities)
+    return render_template('profile_new.html', image_file=image_file, form=form, a=a, incomplete=activities)
 
 
 # Ruta para actualizar datos 
@@ -141,8 +141,10 @@ def index():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     #Parte con fumalrio wtf
+    myTools = Tool.query.filter_by(category=7).all()
     form = ActividadesInput()
-    return render_template('index.html', incomplete=activities, form=form)
+    image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
+    return render_template('profile_new.html', incomplete=activities, form=form, image_file=image_file, myTools=myTools)
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -282,3 +284,12 @@ def paginas_web():
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=2).all()
     return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+
+
+
+""" Funcion agregar herramientas a favoritos """
+
+
+@app.route('/favoritos')
+def fav():
+    pass
