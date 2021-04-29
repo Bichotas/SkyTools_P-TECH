@@ -135,13 +135,6 @@ def update():
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('update.html', image_file=image_file, form=form)
 
-@app.route('/chatbot')
-def chatbot():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    return render_template('chatbot.html', form=form, incomplete=activities)
-
 """ Rutas para barra de herramientas """
 @app.route('/uwu')
 def index():
