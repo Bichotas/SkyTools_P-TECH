@@ -4,7 +4,7 @@ import os
 
 from flask import render_template, url_for, flash, redirect, request, g
 from flask.globals import session
-from aplicacion.models import User, Activity, UserTool, Category
+from aplicacion.models import User, Activity, UserTool, Category, Tool
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -15,7 +15,7 @@ fecha = datetime.now()
 
 def addon(lista, nuevo):
     aux = lista[0]
-    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools' or nuevo == 'learn':
+    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools' or nuevo == 'learn' or nuevo == 'diagramas':
         lista[0] = nuevo
 
     lista[1] = aux
@@ -211,7 +211,10 @@ def learn():
 @app.route('/diagramas')
 def diagramas():
     form = ActividadesInput()
-    return render_template('blank.html', form=form)
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=7).all()
+    return render_template('diagramas.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/mapas_mentales')
 def mapas_mentales():
