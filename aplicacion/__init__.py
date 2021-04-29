@@ -18,3 +18,14 @@ login_manager.login_message_category = 'info'
 
 from aplicacion import routes
 
+import json
+from ibm_watson import AssistantV2
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+authenticator = IAMAuthenticator('cUi4fCi3EjDu8Tw2MO-356F5xbWb504WHvQTZpqhMYo5')
+assistant = AssistantV2(
+    version='2018-09-20',
+    authenticator=authenticator)
+assistant.set_service_url('https://gateway.watsonplatform.net/assistant/api')
+
+
