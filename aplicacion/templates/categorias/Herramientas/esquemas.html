@@ -27,7 +27,6 @@
 
     body{
         background: #c4c4c4;
-
         
     }
 
@@ -124,7 +123,7 @@
     }
     
     .cuadrate{
-        background-color: rgb(252, 252, 253); 
+ 
         height: 120px;
         width: 250px;
         position: relative;
@@ -146,12 +145,6 @@
 
     }
 
-    .cuadrate:hover{
-        background-color: rgba(252, 252, 253, 0.836);
-        /* box-shadow: 0px 6px 4px #14e937; */
-        
-    }
-
     .dripeando-harder{
         background-color: rgb(252, 252, 253); 
         height: 80px;
@@ -165,6 +158,20 @@
         border-radius: 20px;
 
     }
+
+    .dropdown-menu::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: 41.5%;
+        border-top: 20px solid white;
+        border-right: 20px solid transparent;
+        border-left: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        -webkit-transform: rotate(180deg); 
+
+    }
 </style>
 
 {% endblock %}
@@ -175,21 +182,51 @@
 
 <div class="contenedor">
     <div class="contenedor-2">
-        <div class="container titan">Learn Something</div>
+        <div class="container titan">Esquemas</div>
     </div>
 </div>
 <div class="separacion"></div>
 <ul>
 
-    {% for i in myCategory %}
-        <a href="{{ url_for(i.url_for_category) }}">
-            <div class="cuadrate">
-                 <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.category_name }}</div>
-            </div>
-        </a>
+    {% for i in myTools %} 
+            <!-- <div class="cuadrate">
+                 <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
+            </div> -->
+            {% if current_user.is_authenticated %}
+                <div class="btn-group cuadrate">
+                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ i.name }}
+                    </button>
+                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
+                    <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+                    <button class="dropdown-item" type="button" style="text-align: center;">Checar</button>
+                    <button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button>
+                    </div>
+                </div>
+            {% else %}
+                <div class="btn-group cuadrate">
+                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ i.name }}
+                    </button>
+                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
+                    <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+                    <button class="dropdown-item" type="button" style="text-align: center;">Checar</button>
+                    </div>
+                </div>
+            {% endif %}
     {% endfor %}
 
 </ul>
 
-
+<!-- <footer>
+    <div class="acomodo-footer">
+        <div class="container-footer">
+        </div>
+      </div>
+      
+      </footer>
+      <div class="copyrightText" style="background-color: transparent !important;">
+          
+      </div>   
+</footer> -->
 {% endblock %}
