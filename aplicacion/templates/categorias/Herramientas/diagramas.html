@@ -192,6 +192,7 @@
             <!-- <div class="cuadrate">
                  <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
             </div> -->
+            <p>{{ i.id }}</p>
             {% if current_user.is_authenticated %}
                 <div class="btn-group cuadrate">
                     <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -200,7 +201,7 @@
                     <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                     <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
                     <button class="dropdown-item" type="button" style="text-align: center;">Checar Descripcion</button>
-                    <button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button>
+                    <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
                     </div>
                 </div>
             {% else %}
