@@ -179,14 +179,20 @@ def clear():
     follana = g.lista_dou
     return redirect(url_for(follana[0]))
 
+
+
 @app.route('/favorito/<id>')
 def favorite(id):
     id_user = current_user.get_id()
     follana = g.lista_dou 
+    form = ActividadesInput()
     sad = UserTool(users_id=id_user, tool_id=id)
     db.session.add(sad)
     db.session.commit()
-    return redirect(url_for(follana[0]))
+    return redirect(url_for('account'))
+
+    
+
 
 @app.route('/tools')
 def tools():
