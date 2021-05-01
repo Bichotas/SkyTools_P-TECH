@@ -124,8 +124,8 @@
     
     .cuadrate{
  
-        height: 120px;
-        width: 250px;
+        height: 200px;
+        width: 200px;
         position: relative;
         display: inline-block;
         margin-top: 2%;
@@ -164,7 +164,7 @@
         display: block;
         position: absolute;
         top: -40px;
-        left: 41.5%;
+        left: 40%;
         border-top: 20px solid white;
         border-right: 20px solid transparent;
         border-left: 20px solid transparent;
@@ -192,13 +192,13 @@
             <!-- <div class="cuadrate">
                  <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
             </div> -->
-            <p>{{ i.id }}</p>
             {% if current_user.is_authenticated %}
                 <div class="btn-group cuadrate">
                     <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <!-- <img src="{{ url_for('static',filename='image_tools/' + i.image_tool) }}" alt=""> -->
                     {{ i.name }}
                     </button>
-                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
+                    <div class="dropdown-menu" style="width: 200px; margin-top: 25px; border-radius: 20px; ">
                     <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
                     <button class="dropdown-item" type="button" style="text-align: center;">Checar Descripcion</button>
                     <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
@@ -217,19 +217,7 @@
             {% endif %}
     {% endfor %}
 
-</ul>
 
-<!-- <footer>
-    <div class="acomodo-footer">
-        <div class="container-footer">
-        </div>
-      </div>
-      
-      </footer>
-      <div class="copyrightText" style="background-color: transparent !important;">
-          
-      </div>   
-</footer> -->
 <footer>
     <div style="width: 100%; height: 100px; background-color: transparent;"></div>
 </footer>
