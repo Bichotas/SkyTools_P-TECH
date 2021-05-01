@@ -240,8 +240,15 @@ def check_description(name, id):
     activities = Activity.query.filter_by(users_id=id_user).all()
 
     # Parte para mostrar la pagina check
-    desc = db.session.query(Tool).filter_by(id=id).first
-    return render_template('check_description.html', incomplete=activities, desc=desc, form=form)
+    desc = db.session.query(Tool).filter_by(id=id).first()
+    image_tool = url_for('static', filename='image_tools/'+desc.image_tool)
+    image_preview = url_for('static', filename='image_tools/'+desc.image_preview)
+    return render_template('check_description.html',\
+         incomplete=activities,\
+         desc=desc, form=form,\
+         image_tool=image_tool,\
+         image_preview=image_preview)
+
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
