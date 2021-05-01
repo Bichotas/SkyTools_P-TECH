@@ -226,7 +226,9 @@ def check_description(id, name):
     tool_id_check = id
     namea = name
     tool_checkDescription = Tool.query.filter_by(id=tool_id_check)
-    return render_template('check_description.html', tool_id=tool_id_check, name=namea)
+    image_tool = url_for('static', filename='image_tools/'+ tool_checkDescription.image_tool)
+    image_preview = url_for('static', filename='image_preview/'+ tool_checkDescription.image_preview)
+    return render_template('check_description.html', tool_id=tool_id_check, name=namea, image_tool=image_tool, image_preview=image_preview)
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
