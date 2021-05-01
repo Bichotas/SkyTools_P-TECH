@@ -183,6 +183,8 @@ def clear():
 
 
 
+""" Funcion agregar herramientas a favoritos """
+
 @app.route('/favorito/<id>')
 def favorite(id):
     id_user = current_user.get_id()
@@ -217,7 +219,14 @@ def learn():
     myCategory = Category.query.filter_by(type_category_id=2).all()
     return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
 
+""" Funcion para checar descripcion de la herramienta """ 
 
+@app.route('/<id>/<name>/')
+def check_description(id, name):
+    tool_id_check = id
+    namea = name
+    tool_checkDescription = Tool.query.filter_by(id=tool_id_check)
+    return render_template('check_description.html', tool_id=tool_id_check, name=namea)
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
@@ -303,7 +312,5 @@ def paginas_web():
     return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
 
 
-
-""" Funcion agregar herramientas a favoritos """
 
 

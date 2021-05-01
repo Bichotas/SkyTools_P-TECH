@@ -198,7 +198,7 @@
                     </button>
                     <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                     <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
                     <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                     </button>
                     <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                     <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <button class="dropdown-item" type="button" style="text-align: center;">Checar Descripcion</button>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
                     </div>
                 </div>
             {% endif %}
