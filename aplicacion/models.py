@@ -28,6 +28,9 @@ class Tool(db.Model):
     category = db.Column(db.Integer, db.ForeignKey('category.id'))
     image_tool = db.Column(db.String(20), unique=False, nullable=False)
     tool = db.relationship('UserTool', backref='user_tool')
+    image_preview = db.Column(db.String(20), unique=False, nullable=False)
+    descripcion = db.Column(db.String(1000), unique=False, nullable=False)
+    type_tool = db.Column(db.String(20), unique=False, nullable=False)
 
 
 class UserTool(db.Model):
