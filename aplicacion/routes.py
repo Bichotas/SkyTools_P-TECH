@@ -221,14 +221,27 @@ def learn():
 
 """ Funcion para checar descripcion de la herramienta """ 
 
-@app.route('/<id>/<name>/')
-def check_description(id, name):
-    tool_id_check = id
-    namea = name
-    tool_checkDescription = Tool.query.filter_by(id=tool_id_check)
-    image_tool = url_for('static', filename='image_tools/'+ tool_checkDescription.image_tool)
-    image_preview = url_for('static', filename='image_preview/'+ tool_checkDescription.image_preview)
-    return render_template('check_description.html', tool_id=tool_id_check, name=namea, image_tool=image_tool, image_preview=image_preview)
+"""@app.route('/<id>&<name>&<link>&<image_tool>&<image_preview>/<type_t>')
+def check_description(id, name, link, image_tool, image_preview, type_t):
+    form = ActividadesInput()
+    id_tool = id
+    name = name
+    link = link
+    image_tool = image_tool
+    image_preview = image_preview
+    type_t=type_t
+    return render_template('check_description.html', name=name, form=form)
+
+"""
+@app.route('/<name>/<id>')
+def check_description(name, id):
+    form = ActividadesInput()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+
+    # Parte para mostrar la pagina check
+    desc = db.session.query(Tool).filter_by(id=id).first
+    return render_template('check_description.html', incomplete=activities, desc=desc, form=form)
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
