@@ -110,8 +110,8 @@ def account():
     activities = Activity.query.filter_by(users_id=id_user).all()
     form = ActividadesInput()
     a = UpdatingAccountForm()
-
-    myTools = UserTool.query.filter_by(users_id=id_user).all()
+    myTools = db.session.query(Tool).select_from(UserTool).filter_by(users_id=id_user).join(Tool, UserTool.tool_id==Tool.id).all()
+    """myTools = UserTool.query.filter_by(users_id=id_user).all()"""
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('profile_new.html', image_file=image_file, form=form, a=a, incomplete=activities, myTools=myTools)
 
