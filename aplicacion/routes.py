@@ -144,8 +144,7 @@ def index():
     #Parte con fumalrio wtf
     myTools = Tool.query.filter_by(category=7).all()
     form = ActividadesInput()
-    image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
-    return render_template('profile_new.html', incomplete=activities, form=form, image_file=image_file, myTools=myTools)
+    return render_template('blank.html', incomplete=activities, form=form, myTools=myTools)
 
 @app.route('/add', methods=['POST'])
 def add():
