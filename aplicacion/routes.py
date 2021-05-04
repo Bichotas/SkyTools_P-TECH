@@ -240,7 +240,7 @@ def check_description(name, id):
     # Parte para mostrar la pagina check
     desc = db.session.query(Tool).filter_by(id=id).first()
     image_tool = url_for('static', filename='image_tools/'+desc.image_tool)
-    image_preview = url_for('static', filename='image_tools/'+desc.image_preview)
+    image_preview = url_for('static', filename='image_preview/'+desc.image_preview)
     return render_template('check_description.html',\
          incomplete=activities,\
          desc=desc, form=form,\
