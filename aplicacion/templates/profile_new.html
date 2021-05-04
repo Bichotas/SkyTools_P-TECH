@@ -241,34 +241,7 @@
         margin-top: -100px;
     }
     
-    .cuadrate{
-        background-color: rgb(252, 252, 253); 
-        height: 120px;
-        width: 250px;
-        position: relative;
-        display: inline-block;
-        margin-top: 2%;
-        margin-left: 5%;
-        margin-right: 1.5%;
-        margin-bottom: 2%;
-        border-radius: 20px;
 
-    }
-
-    .texto{
-        text-align: center;
-        display: block;
-        font-size: xx-large;
-        font-family: Signika;
-        margin-top: 16%;
-
-    }
-
-    .cuadrate:hover{
-        background-color: rgba(252, 252, 253, 0.836);
-        /* box-shadow: 0px 6px 4px #14e937; */
-        
-    }
 
     .recta{
       background-color: white;
@@ -284,6 +257,61 @@
 
     .separacion-vertical{
         margin-left: 500px;
+    }
+
+    corte{
+        margin-top: -100px;
+    }
+    
+    .cuadrate{
+ 
+        height: 200px;
+        width: 200px;
+        position: relative;
+        display: inline-block;
+        margin-top: 2%;
+        margin-left: 7%;
+        margin-right: 1.5%;
+        margin-bottom: 2%;
+        border-radius: 20px;
+
+    }
+
+    .texto{
+        text-align: center;
+        display: block;
+        font-size: xx-large;
+        font-family: Signika;
+        margin-top: 16%;
+
+    }
+
+    .dripeando-harder{
+        background-color: rgb(252, 252, 253); 
+        height: 80px;
+        width: 250px;
+        position: relative;
+        display: inline-block;
+        margin-top: 2%;
+        margin-left: 5%;
+        margin-right: 1.5%;
+        margin-bottom: 2%;
+        border-radius: 20px;
+
+    }
+
+    .dropdown-menu::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: 30%;
+        border-top: 20px solid white;
+        border-right: 20px solid transparent;
+        border-left: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        -webkit-transform: rotate(180deg); 
+
     }
 </style>
 
@@ -320,7 +348,7 @@
                   {{ i.name }}
                   </button>
                   <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                  <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+                  <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
                   <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
                   <a href="{{ url_for('delete_favorite', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Eliminar de Favoritos</button></a>
                   </div>
