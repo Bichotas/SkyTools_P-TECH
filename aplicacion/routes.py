@@ -249,6 +249,10 @@ def check_description(name, id):
          image_tool=image_tool,\
          image_preview=image_preview)
 
+
+@app.route('/delete/<name>/<id>')
+def delete_favorite(name, id):
+    pass
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
