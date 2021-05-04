@@ -144,7 +144,7 @@ def index():
     #Parte con fumalrio wtf
     myTools = Tool.query.filter_by(category=7).all()
     form = ActividadesInput()
-    return render_template('blank.html', incomplete=activities, form=form, myTools=myTools)
+    return render_template('try.html', incomplete=activities, form=form, myTools=myTools)
 
 @app.route('/add', methods=['POST'])
 def add():
