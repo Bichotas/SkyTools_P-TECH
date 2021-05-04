@@ -303,6 +303,28 @@
        margin-left: 7%;
        margin-top: -2%;
     }
+
+    .depresion-sonora{
+      height: 400px;
+      width: 1100px;
+      background-color: #4d4d4d;
+      margin-left: 6%;
+      position: relative;
+      display: inline-block;
+      margin-top: -7%;
+      border-radius: 25px;
+      
+
+    }
+    .depresion-nosonora{
+      display: block;
+      position: absolute;
+      margin-top: 5%;
+      margin-left: 4%;
+      margin-right: 4%;
+      text-align: center;
+
+    }
 </style>
 
 {% endblock %}
@@ -326,29 +348,11 @@
         </div>
     </div>
     <div class="content-section">
-      <div class="recta">Favorit@s</div>
-      <div class="separacion-vertical"></div>
-      <ul>
-
-        
-        {% for i in myTools %} 
-        <!-- <div class="cuadrate">
-             <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
-        </div> -->
-              
-              <div class="btn-group cuadrate">
-                  <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{ i.tool_id }}
-                  </button>
-                  <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                  <a href="{{ i.link }}"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                  <button class="dropdown-item" type="button" style="text-align: center;">Checar Descripcion</button>
-                  </div>
-              </div>
-
-        {% endfor %}
-
-    </ul>
+      <div class="depresion-sonora">
+        <div class="depresion-nosonora">
+          <h2 style="color: white">{{ desc.descripcion }}</h2>
+        </div>
+      </div>
     </div>
   </div>
 
