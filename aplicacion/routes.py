@@ -15,7 +15,24 @@ fecha = datetime.now()
 
 def addon(lista, nuevo):
     aux = lista[0]
-    if nuevo == 'main' or nuevo == 'about' or nuevo == 'profile' or nuevo == 'account' or nuevo == 'chatbot' or nuevo == 'index' or nuevo == 'tools' or nuevo == 'learn' or nuevo == 'diagramas':
+    if nuevo == 'main'\
+         or nuevo == 'about'\
+         or nuevo == 'profile'\
+              or nuevo == 'account'\
+                   or nuevo == 'chatbot'\
+                        or nuevo == 'index'\
+                             or nuevo == 'tools'\
+                                  or nuevo == 'learn'\
+                                       or nuevo == 'diagramas'\
+                                           or nuevo == 'mapas_mentales'\
+                                               or nuevo == 'pdf_tools'\
+                                                   or nuevo == 'presentaciones'\
+                                                       or nuevo == 'line_time'\
+                                                           or nuevo == 'editores_imagenes'\
+                                                               or nuevo == 'extensiones'\
+                                                                   or nuevo == 'board_online'\
+                                                                       or nuevo == 'esquemas'\
+                                                                           or nuevo == 'paginas_web':
         lista[0] = nuevo
 
     lista[1] = aux
