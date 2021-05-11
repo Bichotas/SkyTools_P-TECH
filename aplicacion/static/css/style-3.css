@@ -10,6 +10,7 @@
 
 body
 {
+  background-image: url(/aplicacion/static/images/stars.png);
   background: linear-gradient(#001f32,#010029);
   width: 100%;
 }
