@@ -3,7 +3,7 @@
 
 {% block title %}
 
-<title>Aprendizaje - SkyTools</title>
+<title>Herramientas - SkyTools</title>
 
 {% endblock %}
 
@@ -24,7 +24,6 @@
         box-sizing: border-box;
         font-family: Signika;
     }
-
     .contenedor{
         
         background-color: #000000;
@@ -145,20 +144,6 @@
         /* box-shadow: 0px 6px 4px #14e937; */
         
     }
-
-    .dripeando-harder{
-        background-color: rgb(252, 252, 253); 
-        height: 80px;
-        width: 250px;
-        position: relative;
-        display: inline-block;
-        margin-top: 2%;
-        margin-left: 5%;
-        margin-right: 1.5%;
-        margin-bottom: 2%;
-        border-radius: 20px;
-
-    }
 </style>
 
 {% endblock %}
@@ -167,7 +152,7 @@
 
 {% block body %}
 
-<div class="contenedor">
+<div class="contenedor" style="background-color: transparent !important;">
     <div class="contenedor-2">
         <div class="container titan">Learn Something</div>
     </div>
@@ -184,6 +169,5 @@
     {% endfor %}
 
 </ul>
-
 
 {% endblock %}

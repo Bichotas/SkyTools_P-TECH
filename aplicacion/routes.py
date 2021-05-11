@@ -232,7 +232,7 @@ def learn():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myCategory = Category.query.filter_by(type_category_id=2).all()
-    return render_template('learn.html',form=form, myCategory=myCategory, incomplete=activities)
+    return render_template('learn-2.html',form=form, myCategory=myCategory, incomplete=activities)
 
 """ Funcion para checar descripcion de la herramienta """ 
 
