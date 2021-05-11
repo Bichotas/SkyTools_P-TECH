@@ -26,7 +26,7 @@
     }
 
     body{
-        background: #c4c4c4;
+        background: linear-gradient(#001f32,#010029);
         
     }
 
@@ -121,6 +121,7 @@
     .corte{
         margin-top: -100px;
     }
+    
     .cuadrate{
  
         height: 200px;
@@ -163,7 +164,7 @@
         display: block;
         position: absolute;
         top: -40px;
-        left: 41.5%;
+        left: 30%;
         border-top: 20px solid white;
         border-right: 20px solid transparent;
         border-left: 20px solid transparent;
@@ -178,10 +179,10 @@
 <!-- Bkloque para poner todo lo del body -->
 
 {% block body %}
-
-<div class="contenedor">
+<img src="{{ url_for('static', filename='images/stars.png') }}" alt="" style="position: fixed;">
+<div class="contenedor"  style="background: transparent !important">
     <div class="contenedor-2">
-        <div class="container titan">Presentaciones Cools</div>
+        <div class="container titan">Presentaciones</div>
     </div>
 </div>
 <div class="separacion"></div>
@@ -198,7 +199,7 @@
                     </button>
                     <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                     <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name, link=i.link, image_tool=i.image_tool, about=i.descripcion) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
                     <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
                     </div>
                 </div>
@@ -228,7 +229,7 @@
           
       </div>   
 </footer> -->
-<footer>
-    <div style="width: 100%; height: 100px; background-color: transparent;"></div>
-  </footer>
+<footer style="background-color: transparent; !important">
+    <div style="width: 100%; height: 100px; background-color: transparent; !important"></div>
+</footer>
 {% endblock %}

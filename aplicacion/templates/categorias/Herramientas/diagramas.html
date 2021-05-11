@@ -3,7 +3,7 @@
 
 {% block title %}
 
-<title>Esquemas - SkyTools</title>
+<title>Aprendizaje - SkyTools</title>
 
 {% endblock %}
 
@@ -164,7 +164,7 @@
         display: block;
         position: absolute;
         top: -40px;
-        left: 41.5%;
+        left: 30%;
         border-top: 20px solid white;
         border-right: 20px solid transparent;
         border-left: 20px solid transparent;
@@ -179,8 +179,8 @@
 <!-- Bkloque para poner todo lo del body -->
 
 {% block body %}
-
-<div class="contenedor" style="background: transparent !important">
+<img src="{{ url_for('static', filename='images/stars.png') }}" alt="" style="position: fixed;">
+<div class="contenedor"  style="background: transparent !important">
     <div class="contenedor-2">
         <div class="container titan">Diagramas</div>
     </div>
@@ -194,12 +194,12 @@
             </div> -->
             {% if current_user.is_authenticated %}
                 <div class="btn-group cuadrate">
-                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle depresion" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ i.name }}
                     </button>
                     <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
                     <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name, link=i.link, image_tool=i.image_tool, about=i.descripcion) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
                     <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
                     </div>
                 </div>
