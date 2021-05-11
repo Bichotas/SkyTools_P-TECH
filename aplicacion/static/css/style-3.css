@@ -7,6 +7,12 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
+
+body
+{
+  background: linear-gradient(#001f32,#010029);
+  width: 100%;
+}
 section
 {
   position: relative;
