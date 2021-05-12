@@ -173,6 +173,12 @@
         -webkit-transform: rotate(180deg); 
 
     }
+
+    .bris{
+        height: 170px;
+        width: 170px;
+        word-wrap: break-word;
+    }
 </style>
 
 {% endblock %}
@@ -187,50 +193,3 @@
     </div>
 </div>
 <div class="separacion"></div>
-<ul>
-
-    {% for i in myTools %} 
-            <!-- <div class="cuadrate">
-                 <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
-            </div> -->
-            {% if current_user.is_authenticated %}
-                <div class="btn-group cuadrate">
-                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ i.name }}
-                    </button>
-                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name, link=i.link, image_tool=i.image_tool, about=i.descripcion) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
-                    <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
-                    </div>
-                </div>
-            {% else %}
-                <div class="btn-group cuadrate">
-                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ i.name }}
-                    </button>
-                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
-                    </div>
-                </div>
-            {% endif %}
-    {% endfor %}
-
-</ul>
-
-<!-- <footer>
-    <div class="acomodo-footer">
-        <div class="container-footer">
-        </div>
-      </div>
-      
-      </footer>
-      <div class="copyrightText" style="background-color: transparent !important;">
-          
-      </div>   
-</footer> -->
-<footer style="background-color: transparent; !important">
-    <div style="width: 100%; height: 100px; background-color: transparent; !important"></div>
-</footer>
-{% endblock %}

@@ -359,7 +359,7 @@ def plataformas_aprendizaje():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=12).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/plataformas_aprendizaje.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/libros')
 def libros():
@@ -367,7 +367,7 @@ def libros():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=13).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/libros.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/cloud_computing')
 def cloud_computing():
@@ -375,7 +375,7 @@ def cloud_computing():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=14).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/cloud_computing.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/soft_skills')
 def soft_skills():
@@ -383,7 +383,7 @@ def soft_skills():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=15).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/soft_skills.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/plataformas-para-educacion-general')
 def educacion_general():
@@ -391,7 +391,7 @@ def educacion_general():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=16).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizajeeducacion_general.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/ciencia-de-datos')
 def ciencia_de_datos():
@@ -399,7 +399,7 @@ def ciencia_de_datos():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=17).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/ciencia_de_datos.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/iniciar-en-la-programacion')
 def iniciar_programacion():
@@ -407,7 +407,7 @@ def iniciar_programacion():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=18).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/iniciar_programacion.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/project-management')
 def project_management():
@@ -415,7 +415,7 @@ def project_management():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=19).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizajeproject_management.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprender-idiomas')
 def idiomas():
@@ -423,7 +423,7 @@ def idiomas():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=20).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/idiomas.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprender-python')
 def python():
@@ -431,7 +431,7 @@ def python():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=21).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/python.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprender-javascript')
 def javascript():
@@ -439,7 +439,7 @@ def javascript():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=22).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/javascript.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/bases-de-datos')
 def bases_datos():
@@ -447,7 +447,7 @@ def bases_datos():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=23).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/bases_de_datos.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprende-machine-learning')
 def machine_learning():
@@ -455,7 +455,7 @@ def machine_learning():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=24).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/machine_learning.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/computacion_cuantica')
 def computacion_cuantica():
@@ -463,7 +463,7 @@ def computacion_cuantica():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=25).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/computacion_cuantica.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/programacion-cuantica')
 def programacion_cuantica():
@@ -471,7 +471,7 @@ def programacion_cuantica():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=26).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/programacion_cuantica.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprende-diseño')
 def diseño():
@@ -479,7 +479,7 @@ def diseño():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=27).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/diseño.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/ciber-seguridad')
 def ciberseguridad():
@@ -487,5 +487,5 @@ def ciberseguridad():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=27).all()
-    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/ciberseguridad.html', form=form, incomplete=activities, myTools=myTools)
 
