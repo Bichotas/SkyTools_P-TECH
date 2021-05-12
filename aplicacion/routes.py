@@ -224,15 +224,16 @@ def tools():
     myCategory = Category.query.filter_by(type_category_id=1).all()
     return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
-@app.route('/learn')
-def learn():
+@app.route('/learn/<id_cat>')
+def learn(id_cat):
     
     #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myCategory = Category.query.filter_by(type_category_id=2).all()
-    return render_template('learn-2.html',form=form, myCategory=myCategory, incomplete=activities)
+    id_cat=id_cat
+    return render_template('learn-2.html',form=form, myCategory=myCategory, incomplete=activities, id_cat=id_cat)
 
 """ Funcion para checar descripcion de la herramienta """ 
 
@@ -474,6 +475,14 @@ def programacion_cuantica():
 
 @app.route('/aprende-diseño')
 def diseño():
+    form = ActividadesInput()
+    id_user = current_user.get_id()
+    activities = Activity.query.filter_by(users_id=id_user).all()
+    myTools = Tool.query.filter_by(category=27).all()
+    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
+
+@app.route('/ciber-seguridad')
+def ciberseguridad():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
