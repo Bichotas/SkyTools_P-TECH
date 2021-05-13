@@ -43,7 +43,7 @@
 
     .contenedor-2{
         
-        background-color: #f8f1f1;
+        background-color: #ffffff;
         width: 25%;
         height: 150px;
         display: inline-flex;
@@ -165,13 +165,18 @@
         display: block;
         position: absolute;
         top: -40px;
-        left: 30%;
+        left: 38%;
         border-top: 20px solid white;
         border-right: 20px solid transparent;
         border-left: 20px solid transparent;
         border-bottom: 20px solid transparent;
         -webkit-transform: rotate(180deg); 
 
+    }
+    .ono{
+        display: block; 
+        height: 150px;
+        width: 150px;
     }
 </style>
 
@@ -189,33 +194,46 @@
 <div class="separacion"></div>
 <ul>
 
-    {% for i in myTools %} 
-            <!-- <div class="cuadrate">
-                 <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
-            </div> -->
-            {% if current_user.is_authenticated %}
-                <div class="btn-group cuadrate">
-                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {% for i in myTools %}
+        {%- set unu='image_tools/'+i.image_tool -%}
+
+        {% if current_user.is_authenticated %}
+        <div class="dropdown show cuadrate">
+            {%- set unu='image_tools/'+i.image_tool -%}
+            {%- set dep = url_for('static', filename='image_tools/'+i.image_tool) -%}
+            <a class="btn btn-secondary cuadrate" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="margin-top: 10px; word-break: break-all;">
                     {{ i.name }}
-                    </button>
-                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name, link=i.link, image_tool=i.image_tool, about=i.descripcion) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
-                    <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
-                    </div>
                 </div>
-            {% else %}
-                <div class="btn-group cuadrate">
-                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="display: block; margin-top: 10px;">
+                    <img src="{{ dep }}" alt="" style="height: 120px; width: 120px;">
+                </div>
+            </a>
+            <div class="dropdown-menu" style="width: 170px; margin-top: 25px; border-radius: 20px; margin-left: 14px;" aria-labelledby="dropdownMenuLink">
+            <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+            <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+            <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
+            </div>
+        </div>
+        {% else %}
+        <div class="dropdown show cuadrate">
+            {%- set unu='image_tools/'+i.image_tool -%}
+            {%- set dep = url_for('static', filename='image_tools/'+i.image_tool) -%}
+            <a class="btn btn-secondary cuadrate" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div style="margin-top: 10px; word-break: break-all;">
                     {{ i.name }}
-                    </button>
-                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
-                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
-                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
-                    </div>
                 </div>
-            {% endif %}
-    {% endfor %}
+                <div style="display: block; margin-top: 10px;">
+                    <img src="{{ dep }}" alt="" style="height: 120px; width: 120px;">
+                </div>
+            </a>
+            <div class="dropdown-menu" style="width: 170px; margin-top: 25px; border-radius: 20px; margin-left: 14px;" aria-labelledby="dropdownMenuLink">
+            <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+            <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+            </div>
+        </div>
+        {% endif %}
+{% endfor %}
 
 </ul>
 
