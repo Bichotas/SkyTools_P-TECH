@@ -1,0 +1,13 @@
+
+# Por favor ingresa el mensaje del commit para tus cambios. Las
+#  líneas que comiencen con '#' serán ignoradas, y un mensaje
+#  vacío aborta el commit.
+#
+# En la rama main
+# Tu rama está actualizada con 'origin/main'.
+#
+# Cambios a ser confirmados:
+#	modificado:     aplicacion/__pycache__/routes.cpython-39.pyc
+#	modificado:     aplicacion/site.db
+#	modificado:     aplicacion/templates/home-2.html
+#

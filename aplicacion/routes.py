@@ -224,16 +224,15 @@ def tools():
     myCategory = Category.query.filter_by(type_category_id=1).all()
     return render_template('tools.html',form=form, myCategory=myCategory, incomplete=activities)
 
-@app.route('/learn/<id_cat>')
-def learn(id_cat):
+@app.route('/learn')
+def learn():
     
     #isa = ["a", "dos", "tres", "cuatro", "cinco,", "ses", "luis", "angeles", "barcelona", "nebula", "harder"]
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myCategory = Category.query.filter_by(type_category_id=2).all()
-    id_cat=id_cat
-    return render_template('learn-2.html',form=form, myCategory=myCategory, incomplete=activities, id_cat=id_cat)
+    return render_template('learn-2.html',form=form, myCategory=myCategory, incomplete=activities)
 
 """ Funcion para checar descripcion de la herramienta """ 
 
@@ -350,142 +349,9 @@ def paginas_web():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=11).all()
-    return render_template('categorias/Aprendizaje/paginas_web_copy.html', form=form, incomplete=activities, myTools=myTools)
+    myTools = Tool.query.filter_by(category=2).all()
+    return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
 
-@app.route('/plataformas_recomendadas_de_aprendizaje')
-def plataformas_aprendizaje():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=12).all()
-    return render_template('categorias/Aprendizaje/plataformas_aprendizaje.html', form=form, incomplete=activities, myTools=myTools)
 
-@app.route('/libros')
-def libros():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=13).all()
-    return render_template('categorias/Aprendizaje/libros.html', form=form, incomplete=activities, myTools=myTools)
 
-@app.route('/cloud_computing')
-def cloud_computing():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=14).all()
-    return render_template('categorias/Aprendizaje/cloud_computing.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/soft_skills')
-def soft_skills():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=15).all()
-    return render_template('categorias/Aprendizaje/soft_skills.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/plataformas-para-educacion-general')
-def educacion_general():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=16).all()
-    return render_template('categorias/Aprendizajeeducacion_general.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/ciencia-de-datos')
-def ciencia_de_datos():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=17).all()
-    return render_template('categorias/Aprendizaje/ciencia_de_datos.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/iniciar-en-la-programacion')
-def iniciar_programacion():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=18).all()
-    return render_template('categorias/Aprendizaje/iniciar_programacion.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/project-management')
-def project_management():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=19).all()
-    return render_template('categorias/Aprendizajeproject_management.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/aprender-idiomas')
-def idiomas():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=20).all()
-    return render_template('categorias/Aprendizaje/idiomas.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/aprender-python')
-def python():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=21).all()
-    return render_template('categorias/Aprendizaje/python.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/aprender-javascript')
-def javascript():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=22).all()
-    return render_template('categorias/Aprendizaje/javascript.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/bases-de-datos')
-def bases_datos():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=23).all()
-    return render_template('categorias/Aprendizaje/bases_de_datos.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/aprende-machine-learning')
-def machine_learning():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=24).all()
-    return render_template('categorias/Aprendizaje/machine_learning.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/computacion_cuantica')
-def computacion_cuantica():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=25).all()
-    return render_template('categorias/Aprendizaje/computacion_cuantica.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/programacion-cuantica')
-def programacion_cuantica():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=26).all()
-    return render_template('categorias/Aprendizaje/programacion_cuantica.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/aprende-diseño')
-def diseño():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=27).all()
-    return render_template('categorias/Aprendizaje/diseño.html', form=form, incomplete=activities, myTools=myTools)
-
-@app.route('/ciber-seguridad')
-def ciberseguridad():
-    form = ActividadesInput()
-    id_user = current_user.get_id()
-    activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=27).all()
-    return render_template('categorias/Aprendizaje/ciberseguridad.html', form=form, incomplete=activities, myTools=myTools)
 

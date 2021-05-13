@@ -161,7 +161,7 @@
 <ul>
 
     {% for i in myCategory %}
-        <a href="{{ url_for(i.url_for_category, id_cat=i.id) }}">
+        <a href="{{ url_for(i.url_for_category) }}">
             <div class="cuadrate">
                  <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.category_name }}</div>
             </div>
