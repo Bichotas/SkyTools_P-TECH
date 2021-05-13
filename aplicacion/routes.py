@@ -390,7 +390,7 @@ def educacion_general():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=16).all()
-    return render_template('categorias/Aprendizajeeducacion_general.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/educacion_general.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/ciencia-de-datos')
 def ciencia_de_datos():
