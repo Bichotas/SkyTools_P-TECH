@@ -414,7 +414,7 @@ def project_management():
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=19).all()
-    return render_template('categorias/Aprendizajeproject_management.html', form=form, incomplete=activities, myTools=myTools)
+    return render_template('categorias/Aprendizaje/project_management.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/aprender-idiomas')
 def idiomas():
