@@ -124,7 +124,6 @@
     }
     
     .cuadrate{
- 
         height: 200px;
         width: 200px;
         position: relative;
@@ -134,6 +133,7 @@
         margin-right: 1.5%;
         margin-bottom: 2%;
         border-radius: 20px;
+        word-break: break-all;
 
     }
 
@@ -178,6 +178,17 @@
         height: 150px;
         width: 150px;
     }
+    .cuadrado-texto{
+        text-align: center;
+        display: block;
+        word-break: break-all;
+        width: 170px;
+        height: 20%;
+    }
+
+    .cuadrado-texto:hover{
+        overflow-wrap: break-word;
+    }
 </style>
 
 {% endblock %}
@@ -202,8 +213,9 @@
             {%- set unu='image_tools/'+i.image_tool -%}
             {%- set dep = url_for('static', filename='image_tools/'+i.image_tool) -%}
             <a class="btn btn-secondary cuadrate" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div style="margin-top: 10px; word-break: break-all;">
-                    {{ i.name }}
+
+                <div class="cuadrado-texto">
+                    {{i.name}}
                 </div>
                 <div style="display: block; margin-top: 10px;">
                     <img src="{{ dep }}" alt="" style="height: 120px; width: 120px;">
