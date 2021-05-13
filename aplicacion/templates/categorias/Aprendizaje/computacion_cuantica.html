@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+
+<title>Aprendizaje - SkyTools</title>
+
+{% endblock %}
+
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-2.css') }}">
+{% endblock %}
+<!-- Estilos para la pagina tools -->
+
+{% block styles %}
+
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Signika;
+    }
+
+    body{
+        background: linear-gradient(#001f32,#010029);
+        width: 100%;
+        
+    }
+
+    .contenedor{
+        
+        background-color: #000000;
+        width: 100%;
+        height: 25rem;
+        display: flex;
+        margin-top: auto;  
+
+    }
+
+    .contenedor-2{
+        
+        background-color: #f8f1f1;
+        width: 25%;
+        height: 150px;
+        display: inline-flex;
+        border-radius: 16px;
+        margin-top: 16%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+
+    
+    }
+    .titan{
+        text-align: center;
+        font-size: 200%;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .campo{
+        color: black;
+        opacity: inherit;
+        position: relative;
+        font-family: signika;
+        
+    }
+
+    
+    #uno{
+        align-items: center;
+    }
+   
+
+    .dou{
+        margin-left: 10%;
+        width: 80%;
+        height: 0px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+
+    .separacion{
+        margin-top: 100px;
+    }
+
+    .uwu{
+        color: white;
+        background-color: #53E96B;
+        font-size: 17px;
+        width: 170px;
+        height: 80px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0px 6px 4px #438A4F;
+    }
+
+    .contenedor-boton{
+        display: block;
+        margin-top: 25%;
+        margin-left: 30%;
+    }    
+
+    .pd{
+        display: block;
+        margin-left: 12%;
+        margin-top: 5%;
+    }
+
+    .uwu:hover{
+        background-color: #38c44f;
+        box-shadow: 0px 6px 4px #296333;
+    }
+
+    .corte{
+        margin-top: -100px;
+    }
+    
+    .cuadrate{
+ 
+        height: 200px;
+        width: 200px;
+        position: relative;
+        display: inline-block;
+        margin-top: 2%;
+        margin-left: 7%;
+        margin-right: 1.5%;
+        margin-bottom: 2%;
+        border-radius: 20px;
+
+    }
+
+    .texto{
+        text-align: center;
+        display: block;
+        font-size: xx-large;
+        font-family: Signika;
+        margin-top: 16%;
+
+    }
+
+    .dripeando-harder{
+        background-color: rgb(252, 252, 253); 
+        height: 80px;
+        width: 250px;
+        position: relative;
+        display: inline-block;
+        margin-top: 2%;
+        margin-left: 5%;
+        margin-right: 1.5%;
+        margin-bottom: 2%;
+        border-radius: 20px;
+
+    }
+
+    .dropdown-menu::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: -40px;
+        left: 30%;
+        border-top: 20px solid white;
+        border-right: 20px solid transparent;
+        border-left: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        -webkit-transform: rotate(180deg); 
+
+    }
+</style>
+
+{% endblock %}
+
+<!-- Bkloque para poner todo lo del body -->
+
+{% block body %}
+<!-- <img src="{{ url_for('static', filename='images/stars.png') }}" alt="" style="position: fixed;"> -->
+<div class="contenedor"  style="background: transparent !important">
+    <div class="contenedor-2">
+        <div class="container titan">Computación Cuántica</div>
+    </div>
+</div>
+<div class="separacion"></div>
+<ul>
+
+    {% for i in myTools %} 
+            <!-- <div class="cuadrate">
+                 <div class="texto" style="font-family: 'Poppins', sans-serif; font-size: large;">{{ i.name }}</div>
+            </div> -->
+            {% if current_user.is_authenticated %}
+                <div class="btn-group cuadrate">
+                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ i.name }}
+                    </button>
+                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
+                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name, link=i.link, image_tool=i.image_tool, about=i.descripcion) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+                    <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: center;">Añadir a Favoritos</button></a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="btn-group cuadrate">
+                    <button class="btn btn-secondary cuadrate btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ i.name }}
+                    </button>
+                    <div class="dropdown-menu" style="width: 230px; margin-top: 25px; border-radius: 20px; margin-left: 12px;">
+                    <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
+                    <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
+                    </div>
+                </div>
+            {% endif %}
+    {% endfor %}
+
+</ul>
+
+<!-- <footer>
+    <div class="acomodo-footer">
+        <div class="container-footer">
+        </div>
+      </div>
+      
+      </footer>
+      <div class="copyrightText" style="background-color: transparent !important;">
+          
+      </div>   
+</footer> -->
+<footer style="background-color: transparent; !important">
+    <div style="width: 100%; height: 100px; background-color: transparent; !important"></div>
+</footer>
+{% endblock %}
