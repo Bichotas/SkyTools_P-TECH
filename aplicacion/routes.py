@@ -349,7 +349,7 @@ def paginas_web():
     form = ActividadesInput()
     id_user = current_user.get_id()
     activities = Activity.query.filter_by(users_id=id_user).all()
-    myTools = Tool.query.filter_by(category=2).all()
+    myTools = Tool.query.filter_by(category=11).all()
     return render_template('categorias/Aprendizaje/paginas_web.html', form=form, incomplete=activities, myTools=myTools)
 
 @app.route('/plataformas_recomendadas_de_aprendizaje')
