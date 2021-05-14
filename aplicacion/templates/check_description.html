@@ -377,6 +377,9 @@
                   <div class="container" style="margin-top: 3%; margin-left: 5%; display: inline-flex">
                       <a href="{{ desc.link }}" target="_blank"><button class="boton-unu" style=" position: absolute;">Ir</button></a>
                   </div>
+                  <div class="container" style="margin-top: 3%; margin-left: 5%;">
+                    <a href="{{ url_for('favorite', id=desc.id) }}" target="_blank"><button class="boton-unu" style=" position: absolute;">Añadir a Favoritos</button></a>
+                  </div>
                 {% else %}
                   <div class="container" style="margin-top: 3%; margin-left: 5%;">
                     <a href="{{ desc.link }}" target="_blank"><button class="boton-unu" style=" position: absolute;">Ir</button></a>
