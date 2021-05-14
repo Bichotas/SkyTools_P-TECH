@@ -128,6 +128,7 @@ def account():
     form = ActividadesInput()
     a = UpdatingAccountForm()
     myTools = db.session.query(Tool).select_from(UserTool).filter_by(users_id=id_user).join(Tool, UserTool.tool_id==Tool.id).all()
+    seca = db.session.query(UserTool).filter_by(users_id=id_user).all()
     image_file = url_for('static', filename='profile_pics/'+ current_user.image_profile)
     return render_template('profile_new.html', image_file=image_file, form=form, a=a, incomplete=activities, myTools=myTools)
 
@@ -236,18 +237,6 @@ def learn():
 
 """ Funcion para checar descripcion de la herramienta """ 
 
-"""@app.route('/<id>&<name>&<link>&<image_tool>&<image_preview>/<type_t>')
-def check_description(id, name, link, image_tool, image_preview, type_t):
-    form = ActividadesInput()
-    id_tool = id
-    name = name
-    link = link
-    image_tool = image_tool
-    image_preview = image_preview
-    type_t=type_t
-    return render_template('check_description.html', name=name, form=form)
-
-"""
 @app.route('/<name>/<id>')
 def check_description(name, id):
     form = ActividadesInput()
@@ -265,9 +254,14 @@ def check_description(name, id):
          image_preview=image_preview)
 
 
-@app.route('/delete/<name>/<id>')
-def delete_favorite(name, id):
-    pass
+@app.route('/delete/<id>/')
+def delete_favorite(id):
+    form = ActividadesInput()
+    id_user = current_user.get_id()
+    id = id
+    db.session.query(UserTool).filter_by(tool_id=id, users_id=id_user).delete()
+    db.session.commit()
+    return redirect(url_for('account'))
 """ Rutas para las categorías de Herramientas en la tabla "Category" """
 
 @app.route('/diagramas')
@@ -487,7 +481,4 @@ def ciberseguridad():
     activities = Activity.query.filter_by(users_id=id_user).all()
     myTools = Tool.query.filter_by(category=28).all()
     return render_template('categorias/Aprendizaje/ciberseguridad.html', form=form, incomplete=activities, myTools=myTools)
-
-
-
 
