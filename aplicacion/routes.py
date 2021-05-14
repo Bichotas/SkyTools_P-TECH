@@ -4,7 +4,7 @@ import os
 
 from flask import render_template, url_for, flash, redirect, request, g
 from flask.globals import session
-from aplicacion.models import User, Activity, UserTool, Category, Tool
+from aplicacion.models import User, Activity, UserTool, Category, Tool, RedirectUser
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -13,7 +13,8 @@ from datetime import datetime
 
 fecha = datetime.now()
 
-def addon(lista, nuevo):
+def addon(nuevo):
+    lista = ["",""]
     aux = lista[0]
     if nuevo == 'main'\
          or nuevo == 'about'\
@@ -45,11 +46,15 @@ lista = ["",""]
 
 
 @app.before_request
+@login_required
 def before_request():
     new = request.endpoint
-    print(new)
-    g.lista_dou = addon(lista, new)
-    print(g.lista_dou)
+    id_user = current_user.get_id()
+    invocar = db.session.query(RedirectUser).filter(user_id=id_user).first()
+    invocar.unoEndpoint = new
+    db.session.add(invocar)
+    db.session.commit()
+    print("id: {}, endpoint: {}".format(invocar.user_id, invocar.unoEndpoint))
 
      
 @app.route('/')
@@ -65,6 +70,12 @@ def register():
         return redirect(url_for('main'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        id_user = current_user.get_id()
+        esp_blanco = db.session.query(RedirectUser).filter(RedirectUser.user_id == id_user).first()
+        if esp_blanco == None:
+            blanco = RedirectUser(user_id=id_user, unoEndpoint="")
+            db.session.add(blanco)
+            db.session.commit
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
