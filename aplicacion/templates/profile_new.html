@@ -367,7 +367,7 @@
             <div class="dropdown-menu" style="width: 180px; margin-top: 25px; border-radius: 20px; margin-left: 14px;" aria-labelledby="dropdownMenuLink">
             <a href="{{ i.link }}" target="_blank"><button class="dropdown-item" type="button" style="text-align: center;">Ir</button></a>
             <a href="{{ url_for('check_description', id=i.id, name=i.name) }}"><button class="dropdown-item" type="button" style="text-align: center;">Leer Descripcion</button></a>
-            <a href="{{ url_for('favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: justify;">Eliminar de Favoritos</button></a>
+            <a href="{{ url_for('delete_favorite', id=i.id) }}"><button class="dropdown-item" type="button" style="text-align: justify;">Eliminar de Favoritos</button></a>
             </div>
           </div>
 
