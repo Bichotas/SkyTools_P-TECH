@@ -1,3 +1,4 @@
+from logging import root
 from re import A
 import secrets
 import os
@@ -8,6 +9,11 @@ from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, A
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
+
+@app.before_request
+def before():
+    new = request.endpoint
+    session["ruta"] = new
 
 @app.route('/')
 def main():
