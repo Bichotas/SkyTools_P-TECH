@@ -2,21 +2,12 @@ from re import A
 import secrets
 import os
 
-from flask import render_template, url_for, flash, redirect, request, g
-from flask.ctx import after_this_request
-from flask.globals import session
-from flask.signals import before_render_template, request_finished
+from flask import render_template, url_for, flash, redirect, request, g, session
 from aplicacion.models import User, Activity, UserTool, Category, Tool, RedirectUser
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
-
-@login_required
-def fak(id_user):
-    pass
-
-
 
 @app.route('/')
 def main():
@@ -132,7 +123,6 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add():
-    follana = g.lista_dou 
     #Parte con formulario
     form = ActividadesInput()
     if current_user.is_authenticated:
@@ -142,17 +132,16 @@ def add():
             owo = Activity(users_id=id_user, text=a_Z)
             db.session.add(owo)
             db.session.commit()
-    return redirect(url_for(follana[0]))
+    return redirect(url_for(session["ruta"]))
     
 @app.route('/delete/<id>')
 def delete(id):
     form = ActividadesInput()
     db.session.query(Activity).filter(Activity.id==id).delete()
     db.session.commit()
-    follana = g.lista_dou 
 
     #return redirect(url_for('index'), form=form)
-    return redirect(url_for(follana[0]))
+    return redirect(url_for(session["ruta"]))
 
 @app.route('/clear')
 def clear():
@@ -160,8 +149,7 @@ def clear():
     form = ActividadesInput()
     db.session.query(Activity).filter(Activity.users_id==id_user).delete()
     db.session.commit()
-    follana = g.lista_dou
-    return redirect(url_for(follana[0]))
+    return redirect(url_for(session["ruta"]))
 
 
 
@@ -170,7 +158,6 @@ def clear():
 @app.route('/favorito/<id>')
 def favorite(id):
     id_user = current_user.get_id()
-    follana = g.lista_dou 
     form = ActividadesInput()
     sad = UserTool(users_id=id_user, tool_id=id)
     db.session.add(sad)
