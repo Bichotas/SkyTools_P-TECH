@@ -1,3 +1,4 @@
+from enum import unique
 from aplicacion import db, login_manager
 from flask_login import UserMixin
 import os
@@ -55,3 +56,7 @@ class Type(db.Model):
     type_ca = db.relationship('Category', backref='type_ca')
 
 
+class RedirectUser(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    users_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    endPoint = db.Column(db.String(40), unique=False, nullable=False)

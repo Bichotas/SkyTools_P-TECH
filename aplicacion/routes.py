@@ -3,55 +3,21 @@ import secrets
 import os
 
 from flask import render_template, url_for, flash, redirect, request, g
+from flask.ctx import after_this_request
 from flask.globals import session
-from aplicacion.models import User, Activity, UserTool, Category, Tool
+from flask.signals import before_render_template, request_finished
+from aplicacion.models import User, Activity, UserTool, Category, Tool, RedirectUser
 from aplicacion.forms import LoginForm, RegistrationForm, UpdatingAccountForm, ActividadesInput
 from aplicacion import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
 
-
-fecha = datetime.now()
-
-def addon(lista, nuevo):
-    aux = lista[0]
-    if nuevo == 'main'\
-         or nuevo == 'about'\
-         or nuevo == 'profile'\
-              or nuevo == 'account'\
-                   or nuevo == 'chatbot'\
-                        or nuevo == 'index'\
-                             or nuevo == 'tools'\
-                                  or nuevo == 'learn'\
-                                       or nuevo == 'diagramas'\
-                                           or nuevo == 'mapas_mentales'\
-                                               or nuevo == 'pdf_tools'\
-                                                   or nuevo == 'presentaciones'\
-                                                       or nuevo == 'line_time'\
-                                                           or nuevo == 'editores_imagenes'\
-                                                               or nuevo == 'extensiones'\
-                                                                   or nuevo == 'board_online'\
-                                                                       or nuevo == 'esquemas'\
-                                                                           or nuevo == 'paginas_web':
-        lista[0] = nuevo
-
-    lista[1] = aux
-    return lista
+@login_required
+def fak(id_user):
+    pass
 
 
 
-
-lista = ["",""]
-
-
-@app.before_request
-def before_request():
-    new = request.endpoint
-    print(new)
-    g.lista_dou = addon(lista, new)
-    print(g.lista_dou)
-
-     
 @app.route('/')
 def main():
     id_user = current_user.get_id()
