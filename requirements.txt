@@ -14,7 +14,6 @@ Flask-WTF==0.14.3
 greenlet==1.0.0
 gunicorn==20.1.0
 heroku==0.1.4
-ibm-watson==5.1.0
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.3
